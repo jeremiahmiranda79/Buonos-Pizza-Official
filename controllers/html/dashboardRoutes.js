@@ -1,9 +1,5 @@
 const router = require('express').Router();
 
-// require models here
-
-// require auth here
-
 router.get('/', async (req, res) => {
   res.render('homepage', {
     layout: 'dashboard',

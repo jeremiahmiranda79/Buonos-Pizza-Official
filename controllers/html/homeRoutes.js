@@ -32,47 +32,33 @@ router.get('/about', async (req, res) => {
   });
 });
 
-router.get('/test', async (req, res) => {
+// Route gets all menu items, with modifiers attached to each item
+router.get('/newmenu', async (req, res) => {
     try {
-        const categories = await Categories.findAll();
-        const menuitems = await MenuItems.findAll();
-        const modifiers = await Modifiers.findAll();
-
-        const serializedCategories = categories.map((category) => category.get({ plain: true }));
-        const serializedMenuitems = menuitems.map((menuitem) => menuitem.get({ plain: true }));
-        const serializedModifiers = modifiers.map((modifier) => modifier.get({ plain: true }));
-
-        // console.log(serializedCategories);
-        // console.log(serializedMenuitems);
-        console.log(serializedModifiers);
-        res.status(200).render('test', {
-            category: serializedCategories,
-            menuitem: serializedMenuitems,
-            modifiers: serializedModifiers
+        const menu = await Categories.findAll({
+            attributes: {
+                exclude: ['id', 'createdAt', 'updatedAt']
+            },
+            include: [
+                {model: MenuItems, attributes: {
+                    exclude: ['id', 'categoryId', 'modifierId', 'employeeId', 'createdAt', 'updatedAt', 'menuItemIds']
+                }},
+                {model: Modifiers, attributes: { 
+                        exclude: [ 'id', 'categoryId', 'notesForTheKitchen', 'createdAt', 'updatedAt' ] 
+                }}
+            ]
+        });
+        const serializedMenuitems = menu.map((menuitem) => menuitem.get({ plain: true }));
+        res.status(200).render('newmenu', {
+            category: serializedMenuitems
         });
     } catch (error) {
         console.log(error);
         res.status(500).json(error); // 500 - internal server error
     };
 });
-router.get('/test/:id', async (req, res) => {
-    try {
-        const menuItem = await MenuItems.findByPk(req.params.id);
-        const modifiers = await Modifiers.findAll();
-        const serializedMenuitem = menuItem.get({ plain: true })
-        const serializedModifiers = modifiers.map((modifier) => modifier.get({ plain: true }));
-        console.log(serializedMenuitem);
-        console.log(serializedModifiers);
-        res.status(200).render('testsingle', {
-            menuitem: serializedMenuitem,
-            mods: serializedModifiers
-        });
-    } catch (error) {
-        console.log(error);
-        res.status(500).json(error); // 500 - internal server error
-    };
-});
-router.get('/anothertest', async (req, res) => {
+// Route gets all menu items by category with modifier attached to category instead of individual menu items
+router.get('/menuItemsMods', async (req, res) => {
     try {
         const menuItem = await Categories.findAll({
             include: [{ 
@@ -80,36 +66,19 @@ router.get('/anothertest', async (req, res) => {
                 include: { 
                     model: Modifiers, 
                     attributes: { 
-                        exclude: 
-                        [
-                            'id', 
-                            'categoryId', 
-                            'notesForTheKitchen', 
-                            'createdAt', 
-                            'updatedAt'
-                        ] } }, 
+                        exclude: [ 'id', 'categoryId', 'notesForTheKitchen', 'createdAt', 'updatedAt' ]
+                     } }, 
                         attributes: { 
-                            exclude: 
-                            [
-                                'id', 
-                                'categoryId', 
-                                'modifierId', 
-                                'employeeId', 
-                                'createdAt', 
-                                'updatedAt', 
-                                'menuItemIds'
-                            ] } }],
+                            exclude: [ 'id', 'categoryId', 'modifierId', 'employeeId', 'createdAt', 'updatedAt', 'menuItemIds' ] 
+                            } }],
             attributes: {
-                exclude: 
-                [
-                    'id', 
-                    'createdAt', 
-                    'updatedAt'],
+                exclude: [ 'id', 'createdAt', 'updatedAt' ],
             }
         });
         const serializedMenuitems = menuItem.map((menuitem) => menuitem.get({ plain: true }));
-        res.status(200).render('anothertest', {
-            items: serializedMenuitems
+        console.log(serializedMenuitems[0]);
+        res.status(200).render('test', {
+            category: serializedMenuitems
         });
     } catch (error) {
         console.log(error);
@@ -231,58 +200,58 @@ router.get('/menu', async (req, res) => {
 });
 
 
-router.get('/:menuItemId', async (req, res) => {
+// router.get('/:menuItemId', async (req, res) => {
 
-    // ******* need to make a fetch call to the api endpoint
+//     // ******* need to make a fetch call to the api endpoint
 
-  try {
+//   try {
 
-    // const menuItem = await MenuItems.findByPk(req.params.menuItemId, {
-    //     attributes: {
-    //         exclude: ['id', 'createdAt', 'updatedAt', 'categoryId', 'employeeId', 'menuItemIds']
-    //     }
-    // });
+//     // const menuItem = await MenuItems.findByPk(req.params.menuItemId, {
+//     //     attributes: {
+//     //         exclude: ['id', 'createdAt', 'updatedAt', 'categoryId', 'employeeId', 'menuItemIds']
+//     //     }
+//     // });
 
-    const menuItem = await MenuItems.findByPk(req.params.menuItemId);
-    const pizzaToppings = await PizzaToppings.findAll();
-    const topping = pizzaToppings.map((top) => top.get({ plain: true }));
+//     const menuItem = await MenuItems.findByPk(req.params.menuItemId);
+//     const pizzaToppings = await PizzaToppings.findAll();
+//     const topping = pizzaToppings.map((top) => top.get({ plain: true }));
 
-    //const item = menuItem.map((x) => x.get({ plain: true }));
-    //const item = menuItem => menuItem.get({plain: true})
-    //console.log(json.item);
+//     //const item = menuItem.map((x) => x.get({ plain: true }));
+//     //const item = menuItem => menuItem.get({plain: true})
+//     //console.log(json.item);
 
-    // const item = menuItem.get({plain: true});
+//     // const item = menuItem.get({plain: true});
 
-    // const menuItem = await MenuItems.findByPk(req.params.menuItemId, {
-    //     // Working to view the modifiers when viewing one menu item
+//     // const menuItem = await MenuItems.findByPk(req.params.menuItemId, {
+//     //     // Working to view the modifiers when viewing one menu item
 
-    //     // include: [
-    //     //     [
-    //     //         sequelize.literal(`SELECT menuitems.*, modifiers.*
-    //     //         FROM menuitems
-    //     //         LEFT OUTER JOIN modifiers ON menuitems.id = modifiers.categoryId
-    //     //         WHERE menuitems.id = ${req.params.menuItemId};`),
-    //     //         'modifiers'
-    //     //     ]
-    //     // ],
+//     //     // include: [
+//     //     //     [
+//     //     //         sequelize.literal(`SELECT menuitems.*, modifiers.*
+//     //     //         FROM menuitems
+//     //     //         LEFT OUTER JOIN modifiers ON menuitems.id = modifiers.categoryId
+//     //     //         WHERE menuitems.id = ${req.params.menuItemId};`),
+//     //     //         'modifiers'
+//     //     //     ]
+//     //     // ],
         
-    //     attributes: {
-    //         exclude: ['id', 'createdAt', 'updatedAt', 'categoryId', 'employeeId', 'menuItemIds']
-    //     }
-    // });
+//     //     attributes: {
+//     //         exclude: ['id', 'createdAt', 'updatedAt', 'categoryId', 'employeeId', 'menuItemIds']
+//     //     }
+//     // });
 
-    //res.status(200).json(menuItem);
-    //res.status(200).json(topping);
+//     //res.status(200).json(menuItem);
+//     //res.status(200).json(topping);
     
-    res.render('product-quick-view', {
-        item,
-        topping
-    })
-} catch (error) {
-    console.log(error);
-    res.status(500).json(error); // 500 - internal server error
-};
-});
+//     res.render('product-quick-view', {
+//         item,
+//         topping
+//     })
+// } catch (error) {
+//     console.log(error);
+//     res.status(500).json(error); // 500 - internal server error
+// };
+// });
 
 
 router.get('/scores', async (req, res) => {
