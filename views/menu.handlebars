@@ -1,0 +1,247 @@
+<div class="bg-white">
+  <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+    <h2 class="sr-only">Products</h2>
+    
+    <div class="inline-flex rounded-md shadow-sm" role="group">
+      {{#each categories as |category| }}
+      <a href="#{{category.id}}"><button type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">{{ category.name }}</button></a>
+        
+      {{/each}}
+    </div>
+
+    <br>
+    <br>
+    <h1 id="1"><strong>Pizzas</strong></h1>
+    <br>
+    
+    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+      {{#each menuObject.Pizzas as |item|}}
+        <a href="#" class="group">
+          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+            <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+          </div>
+          <h3 class="mt-4 text-sm text-gray-700">{{item.name}}</h3>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.price}}</p>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.description}}</p>
+        </a>
+      {{/each}}
+    </div>
+
+    <br>
+    <br>
+    <h1 id="2"><strong>Calzones</strong></h1>
+    <br>
+
+    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+      {{#each menuObject.Calzones as |item|}}
+        <a href="{{menuObjects.Calzones.id}}" class="group">
+          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+            <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+          </div>
+          <h3 class="mt-4 text-sm text-gray-700">{{item.name}}</h3>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.price}}</p>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.description}}</p>
+        </a>
+      {{/each}}
+    </div>
+
+    <br>
+    <br>
+    <h1 id="3"><strong>Strombolies</strong></h1>
+    <br>
+
+    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+      {{#each menuObject.Strombolies as |item|}}
+        <a href="{{menuObjects.Strombolies.id}}" class="group">
+          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+            <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+          </div>
+          <h3 class="mt-4 text-sm text-gray-700">{{item.name}}</h3>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.price}}</p>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.description}}</p>
+        </a>
+      {{/each}}
+    </div>
+
+    <br>
+    <br>
+    <h1 id="4"><strong>Appetizers</strong></h1>
+    <br>
+
+    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+      {{#each menuObject.Appetizers as |item|}}
+        <a href="{{menuObjects.Appetizers.id}}" class="group">
+          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+            <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+          </div>
+          <h3 class="mt-4 text-sm text-gray-700">{{item.name}}</h3>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.price}}</p>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.description}}</p>
+        </a>
+      {{/each}}
+    </div>
+
+    <br>
+    <br>
+    <h1 id="5"><strong>Salads</strong></h1>
+    <br>
+
+    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+      {{#each menuObject.Salads as |item|}}
+        <a href="{{menuObjects.Salads.id}}" class="group">
+          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+            <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+          </div>
+          <h3 class="mt-4 text-sm text-gray-700">{{item.name}}</h3>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.price}}</p>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.description}}</p>
+        </a>
+      {{/each}}
+    </div>
+
+    <br>
+    <br>
+    <h1 id="6"><strong>Entrees</strong></h1>
+    <br>
+
+    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+      {{#each menuObject.Entrees as |item|}}
+        <a href="{{menuObjects.Entrees.id}}" class="group">
+          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+            <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+          </div>
+          <h3 class="mt-4 text-sm text-gray-700">{{item.name}}</h3>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.price}}</p>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.description}}</p>
+        </a>
+      {{/each}}
+    </div>
+
+    <br>
+    <br>
+    <h1 id="7"><strong>Pastas</strong></h1>
+    <br>
+
+    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+      {{#each menuObject.Pastas as |item|}}
+        <a href="{{menuObjects.Pastas.id}}" class="group">
+          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+            <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+          </div>
+          <h3 class="mt-4 text-sm text-gray-700">{{item.name}}</h3>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.price}}</p>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.description}}</p>
+        </a>
+      {{/each}}
+    </div>
+
+    <br>
+    <br>
+    <h1 id="8"><strong>HotSubs</strong></h1>
+    <br>
+
+    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+      {{#each menuObject.HotSubs as |item|}}
+        <a href="{{menuObjects.HotSubs.id}}" class="group">
+          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+            <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+          </div>
+          <h3 class="mt-4 text-sm text-gray-700">{{item.name}}</h3>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.price}}</p>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.description}}</p>
+        </a>
+      {{/each}}
+    </div>
+
+    <br>
+    <br>
+    <h1 id="9"><strong>ColdSubs</strong></h1>
+    <br>
+
+    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+      {{#each menuObject.ColdSubs as |item|}}
+        <a href="{{menuObjects.ColdSubs.id}}" class="group">
+          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+            <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+          </div>
+          <h3 class="mt-4 text-sm text-gray-700">{{item.name}}</h3>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.price}}</p>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.description}}</p>
+        </a>
+      {{/each}}
+    </div>
+
+    <br>
+    <br>
+    <h1 id="10"><strong>SideOrders</strong></h1>
+    <br>
+
+    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+      {{#each menuObject.SideOrders as |item|}}
+        <a href="{{menuObjects.SideOrders.id}}" class="group">
+          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+            <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+          </div>
+          <h3 class="mt-4 text-sm text-gray-700">{{item.name}}</h3>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.price}}</p>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.description}}</p>
+        </a>
+      {{/each}}
+    </div>
+
+    <br>
+    <br>
+    <h1 id="11"><strong>Desserts</strong></h1>
+    <br>
+
+    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+      {{#each menuObject.Desserts as |item|}}
+        <a href="{{menuObjects.Desserts.id}}" class="group">
+          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+            <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+          </div>
+          <h3 class="mt-4 text-sm text-gray-700">{{item.name}}</h3>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.price}}</p>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.description}}</p>
+        </a>
+      {{/each}}
+    </div>
+
+    <br>
+    <br>
+    <h1 id="12"><strong>Beverages</strong></h1>
+    <br>
+
+    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+      {{#each menuObject.Beverages as |item|}}
+        <a href="{{menuObjects.Beverages.id}}" class="group">
+          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+            <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+          </div>
+          <h3 class="mt-4 text-sm text-gray-700">{{item.name}}</h3>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.price}}</p>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.description}}</p>
+        </a>
+      {{/each}}
+    </div>
+
+    <br>
+    <br>
+    <h1 id="13"><strong>NY_Speacialies</strong></h1>
+    <br>
+
+    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+      {{#each menuObject.NY_Speacialies as |item|}}
+        <a href="{{menuObjects.NY_Speacialies.id}}" class="group">
+          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+            <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+          </div>
+          <h3 class="mt-4 text-sm text-gray-700">{{item.name}}</h3>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.price}}</p>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{item.description}}</p>
+        </a>
+      {{/each}}
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,22 @@
+/* Task List 1 */
+
+/* 
+    - Hide all API keys, sql passwords, ect.. with .ENV
+    - Will need loggin buttons on the main handlebar that should represent the condition of logged in as `admin, employee, customer, sign out` or not logged in, sign in, or sign up.
+    - Main handlebar needs some clean up with header and footer since this will be the same for each view as we create new pages or views.
+    - Need to set up routes through the controllers and api's for the current pages and be ready to adapt more views to several of them (for differnt views depending on access levels).
+    - Create the db and define the table relationships.
+    - Create seed data for the tables.
+    - Set up the auth for client login information with bcrypt
+    ** Jeremiah **- Seperate the images folder into sperated image folders with good naming convention. 
+    - We need to correct the file path for all of the images since the new file structure has changed a bit from the original copy (Look for global variables(hopefully) for larger .js files).
+    - Test existing html files for bugs while updating to Views with handlebars. Please report and odd behaviour. 
+    - Push to heroku as soon as possible so we can test for those unpredictable bugs often, and they can happen when the app is actually deployed (for example when testing in nodemon, it has a delay that may not be noticable with out async in a live testing...)!
+    - Footer that is now in the main.handlebars needs some clean up in code.
+    - Everyone should have access to both v1 and v2 repos for references and x-ferrs.
+
+    *Please download the MySQL Work Bench, it will save you all a ton of time for testing your queries
+    https://dev.mysql.com/downloads/workbench/
+
+    If you need any assistance installing please ask for help. 
+*/

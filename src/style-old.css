@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* navbar-brand img {
+    height: 50px;
+    width: 50px;
+  }
+  
+  @media (max-width: 991.98px) {
+    .navbar-collapse {
+      position: fixed;
+      top: 56px;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 56px);
+      background-color: #343a40;
+      padding-top: 1rem;
+      z-index: 1000;
+      overflow-y: auto;
+      transition: transform 0.3s ease-in-out;
+      transform: translateX(-100%);
+    }
+    
+    .navbar-collapse.show {
+      transform: translateX(0%);
+    }
+    
+    .navbar-nav {
+      flex-direction: column;
+    }
+    
+    .nav-item {
+      margin-right: 0 !important;
+      margin-bottom: .5rem;
+    }
+    
+    .nav-link {
+      padding: .5rem 1rem;
+      color: #fff !important;
+    }
+  }
+
+.custom-card {
+    padding-right:  0;
+    padding-left: 0;
+}
+.checked{
+    color:orange;
+}
+
+.card-footer{
+    background-color: white;
+    border-style: none;
+}
+
+.bgCardHeader{
+    background-color: rgb(23,78,166);
+}
+
+.card-footer {
+    background-color: lightgray;
+    border-style:none;
+    padding: 10px;
+}
+
+.sportsCardContainer{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.innings{
+    padding: 0%;
+}
+.row{
+    --bs-gutter-x: 0rem;
+}
+.scroll {
+    max-height: 100px;
+    overflow: scroll;
+}
+.img-container{
+    background-image: url("../Images/yankeesLogo.png");
+    background-size:contain;
+}
+
+#favorite-teams-list {
+  display: block;
+  margin: 10px 0;
+  padding: 8px 10px;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.5;
+  color: #333;
+  background-color: #fff;
+  background-image: none;
+  border-radius: 4px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+} */
