@@ -1,7 +1,5 @@
-[
-    {"customerId": 1, "menuItemIds": 23, "totalPrice": 5.74},
-    {"customerId": 2, "menuItemIds": 20, "totalPrice": 8.48},
-    {"customerId": 3, "menuItemIds": 10, "totalPrice": 11.98},
-    {"customerId": 4, "menuItemIds": 25, "totalPrice": 6.98},
-    {"customerId": 5, "menuItemIds": 24, "totalPrice": 28.49}
-]
+[{"customerId": 1, "menuItemIds": 23, "totalPrice": 5.74},
+{"customerId": 2, "menuItemIds": 20, "totalPrice": 8.48},
+{"customerId": 3, "menuItemIds": 10, "totalPrice": 11.98},
+{"customerId": 4, "menuItemIds": 25, "totalPrice": 6.98},
+{"customerId": 5, "menuItemIds": 24, "totalPrice": 28.49}]
