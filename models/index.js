@@ -5,7 +5,6 @@ const MenuItems = require('./MenuItems');
 const Modifiers = require('./Modifiers');
 const Orders = require('./Orders');
 const Transactions = require('./Transactions');
-const PizzaToppings = require('./PizzaToppings')
 
 // Employees to MenuItems
 Employees.hasMany(MenuItems, {
@@ -63,4 +62,4 @@ MenuItems.belongsTo(Modifiers, {
     foreignKey: 'modifierId'
 });
 
-module.exports = { Categories, Customers, Employees, MenuItems, Orders, Transactions, Modifiers, PizzaToppings };
+module.exports = { Categories, Customers, Employees, MenuItems, Orders, Transactions, Modifiers };

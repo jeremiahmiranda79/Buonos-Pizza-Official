@@ -1,8 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const PizzaToppings = require('../../models/PizzaToppings');
 const { Categories, MenuItems, Modifiers  } = require('../../models');
-
 
 /***** READ ******/
 // Route to retireve all Menu Items & Categories
@@ -89,7 +87,7 @@ router.get('/:menuItemId', async (req, res) => {
     try {
         const menuItem = await MenuItems.findByPk(req.params.menuItemId, {
             attributes: {
-                exclude: ['id', 'createdAt', 'updatedAt', 'categoryId', 'employeeId', 'menuItemIds']
+                exclude: ['createdAt', 'updatedAt']//'id', 'categoryId', 'employeeId', 'menuItemIds'
             }
         });
         res.status(200).json(menuItem);
