@@ -25,6 +25,13 @@ MenuItems.init(
                 key: 'id'
             }
         },
+        sizeId: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'sizes',
+                key: 'id'
+            }
+        },
         employeeId: {
             type: DataTypes.INTEGER,
             references: {

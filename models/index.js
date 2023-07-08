@@ -5,6 +5,8 @@ const MenuItems = require('./MenuItems');
 const Modifiers = require('./Modifiers');
 const Orders = require('./Orders');
 const Transactions = require('./Transactions');
+const Sizes = require('./Sizes');
+
 
 // Employees to MenuItems
 Employees.hasMany(MenuItems, {
@@ -62,4 +64,20 @@ MenuItems.belongsTo(Modifiers, {
     foreignKey: 'modifierId'
 });
 
-module.exports = { Categories, Customers, Employees, MenuItems, Orders, Transactions, Modifiers };
+// Menu Items to Sizes
+Sizes.hasMany(MenuItems, {
+    foreignKey: 'sizeId'
+});
+MenuItems.belongsTo(Sizes, {
+    foreignKey: 'sizeId'
+});
+
+// Modifiers to Categories
+Categories.hasOne(Sizes, {
+    foreignKey: 'categoryId'
+});
+Sizes.belongsTo(Categories, {
+    foreignKey: 'categoryId'
+});
+
+module.exports = { Categories, Customers, Employees, MenuItems, Orders, Transactions, Modifiers, Sizes };
