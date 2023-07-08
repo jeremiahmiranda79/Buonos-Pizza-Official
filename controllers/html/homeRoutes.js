@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { Categories, MenuItems, Modifiers } = require('../../models');
+const sequelize = require('../../config/connection');
+const { Categories, MenuItems, Modifiers, Sizes  } = require('../../models');
 
 router.get('/', async (req, res) => {
   res.render('homepage', {
@@ -26,7 +27,8 @@ router.get('/menu', async (req, res) => {
                 }},
                 {model: Modifiers, attributes: { 
                     exclude: ['categoryId', 'notesForTheKitchen', 'createdAt', 'updatedAt' ]//'id'
-                }}
+                }},
+                {model: Sizes}
             ]
         });
         const serializedMenuitems = menu.map((menuitem) => menuitem.get({ plain: true }));
@@ -40,8 +42,34 @@ router.get('/menu', async (req, res) => {
     };
 });
 
+router.get('/newmenu', async (req, res) => {
+    try {
+        const menu = await Categories.findAll({
+            attributes: {
+                exclude: ['createdAt', 'updatedAt']//'id'
+            },
+            include: [
+                {model: MenuItems, attributes: {
+                    exclude: ['categoryId', 'modifierId', 'employeeId', 'createdAt', 'updatedAt', 'menuItemIds']//'id'
+                }},
+                {model: Modifiers, attributes: { 
+                    exclude: ['categoryId', 'notesForTheKitchen', 'createdAt', 'updatedAt' ]//'id'
+                }},
+                {model: Sizes}
+            ]
+        });
+        const serializedMenuitems = menu.map((menuitem) => menuitem.get({ plain: true }));
+        res.status(200).render('newmenu', {
+            category: serializedMenuitems
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error); // 500 - internal server error
+    };
+});
+
 // Router to get a menuitem by Id, to display single menu item, with mods
-router.get('/menu/:menuItemId', async (req, res) => {
+router.get('/newmenu/:menuItemId', async (req, res) => {
     try {
         const menuItem = await MenuItems.findByPk(req.params.menuItemId, {
             include: [

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Categories, MenuItems, Modifiers  } = require('../../models');
+const { Categories, MenuItems, Modifiers, Sizes  } = require('../../models');
 
 /***** READ ******/
 // Route to retireve all Menu Items & Categories
@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
                 {model: MenuItems, attributes: {
                     exclude: ['id', 'categoryId', 'employeeId', 'createdAt', 'updatedAt', 'menuItemIds']
                 }},
-                {model: Modifiers}
+                {model: Modifiers},
             ]
         });
         res.status(200).json(menu);
@@ -88,7 +88,11 @@ router.get('/:menuItemId', async (req, res) => {
         const menuItem = await MenuItems.findByPk(req.params.menuItemId, {
             attributes: {
                 exclude: ['createdAt', 'updatedAt']//'id', 'categoryId', 'employeeId', 'menuItemIds'
-            }
+            },
+            include: [
+                {model: Categories},
+                {model: Modifiers}
+            ] 
         });
         res.status(200).json(menuItem);
     } catch (error) {
@@ -97,9 +101,21 @@ router.get('/:menuItemId', async (req, res) => {
     };
 });
 
+// Route for menu items with sizes, mods, categories
+// GET with endpoint '/api/menu/sizes'
+router.get('/TEST', async (req, res) => {
+    try {
+        const menuItems = await MenuItems.findAll();
+        res.status(200).json(menuItems);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error); // 500 - internal server error
+    };
+});
+
 /***** CREATE ******/
 // Route to create new Menu Item
-// GET method with endpoint '/api/menu/newitem'
+// POST method with endpoint '/api/menu/newitem'
 router.post('/newitem', async (req, res) => {
     try {
         const newMenuItem = await MenuItems.create({
@@ -118,7 +134,7 @@ router.post('/newitem', async (req, res) => {
 });
 
 // Route to create new Category
-// GET method with endpoint '/api/menu/newcategory'
+// POST method with endpoint '/api/menu/newcategory'
 router.post('/newcategory', async (req, res) => {
     try {
         const newCategory = await Categories.create({
@@ -133,7 +149,7 @@ router.post('/newcategory', async (req, res) => {
 
 /***** UPDATE ******/
 // Route to update new Menu Item
-// GET method with endpoint '/api/menu/updateMenuItem/:menuItemId'
+// PUT method with endpoint '/api/menu/updateMenuItem/:menuItemId'
 router.put('/updateMenuItem/:menuItemId', async (req, res) => {
     try {
         const updatedMenuItem = await MenuItems.update(req.body, {
@@ -151,7 +167,7 @@ router.put('/updateMenuItem/:menuItemId', async (req, res) => {
 });
 
 // Route to update new Category
-// GET method with endpoint '/api/menu/updateCategory/:categoryId'
+// PUT method with endpoint '/api/menu/updateCategory/:categoryId'
 router.put('/updateCategory/:categoryId', async (req, res) => {
     try {
         const updatedCategory = await Categories.update(req.body, {
@@ -170,7 +186,7 @@ router.put('/updateCategory/:categoryId', async (req, res) => {
 
 /***** DELETE ******/
 // Route to delete Menu Item
-// GET method with endpoint '/api/menu/deleteMenuItem/:menuItemId'
+// DELETE method with endpoint '/api/menu/deleteMenuItem/:menuItemId'
 router.delete('/deleteMenuItem/:menuItemId', async (req, res) => {
     try {
         const deletedMenuItem = await MenuItems.destroy({
@@ -188,7 +204,7 @@ router.delete('/deleteMenuItem/:menuItemId', async (req, res) => {
 });
 
 // Route to delete Menu Item
-// GET method with endpoint '/api/menu/deleteCategory/:categoryId'
+// DELETE method with endpoint '/api/menu/deleteCategory/:categoryId'
 router.delete('/deleteCategory/:categoryId', async (req, res) => {
     try {
         const deletedCategory = await Categories.destroy({

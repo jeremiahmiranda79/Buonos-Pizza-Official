@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Customers  } = require('../../models');
+const { Customers, Sizes  } = require('../../models');
 
 /***** READ ******/
 // Route to retireve all Customers

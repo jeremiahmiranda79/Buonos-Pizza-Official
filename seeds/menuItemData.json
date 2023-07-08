@@ -1,10 +1,10 @@
-[{"categoryId": 1, "modifierId": 1, "employeeId": 2, "name": "Neapolitan Cheese Pizza", "description": "Pizza with cheese, 18 inches", "price": 19.49, "quantity": 20},
-{"categoryId": 1, "modifierId": 1, "employeeId": 3, "name": "Wingza", "description": "Pizza with wings on it", "price": 25.99, "quantity": 20},
-{"categoryId": 1, "modifierId": 1, "employeeId": 2, "name": "Neapolitan Cheese Slice", "description": "thin, Toppings on slices .75 each", "price": 2.99, "quantity": 20},
-{"categoryId": 1, "modifierId": 1, "employeeId": 3, "name": "Sicilian Cheese Slice", "description": "Toppings on slices .75 each", "price": 3.49, "quantity": 20},
+[{"categoryId": 1, "modifierId": 1, "sizeId": 1, "employeeId": 2, "name": "Neapolitan Cheese Pizza", "description": "Pizza with cheese, 18 inches", "price": 19.49, "quantity": 20},
+{"categoryId": 1, "modifierId": 1, "sizeId": 1, "employeeId": 3, "name": "Wingza", "description": "Pizza with wings on it", "price": 25.99, "quantity": 20},
+{"categoryId": 1, "modifierId": 1, "sizeId": 1, "employeeId": 2, "name": "Neapolitan Cheese Slice", "description": "thin, Toppings on slices .75 each", "price": 2.99, "quantity": 20},
+{"categoryId": 1, "modifierId": 1, "sizeId": 1, "employeeId": 3, "name": "Sicilian Cheese Slice", "description": "Toppings on slices .75 each", "price": 3.49, "quantity": 20},
 
-{"categoryId": 2, "modifierId": 2, "employeeId": 2, "name": "Small Calzone", "description": "serves one", "price": 9.99, "quantity": 20},
-{"categoryId": 2, "modifierId": 2, "employeeId": 3, "name": "Large Calzone", "description": "serves 2-3", "price": 13.99, "quantity": 20},
+{"categoryId": 2, "modifierId": 2, "sizeId": 2, "employeeId": 2, "name": "Small Calzone", "description": "serves one", "price": 9.99, "quantity": 20},
+{"categoryId": 2, "modifierId": 2, "sizeId": 2, "employeeId": 3, "name": "Large Calzone", "description": "serves 2-3", "price": 13.99, "quantity": 20},
 
 {"categoryId": 3, "employeeId": 3, "name": "Sausage, Peppers, Onions and Mozzarella Stromboli", "description": "rolled calzone", "price": 13.99, "quantity": 20},
 {"categoryId": 3, "employeeId": 2, "name": "Meatballs, Marinara and Mozzarella Stromboli", "description": "rolled calzone", "price": 10.99, "quantity": 20},
@@ -12,16 +12,16 @@
 
 {"categoryId": 4, "employeeId": 2, "name": "French Fries", "description": "fries", "price": 3.99, "quantity": 20},
 {"categoryId": 4, "employeeId": 3, "name": "Garlic Bread", "description": "garlic bread", "price": 3.99, "quantity": 20},
-{"categoryId": 4, "modifierId": 3, "employeeId": 2, "name": "Wings", "description": "Hot, Medium, Mild, Honey Hot, Honey, BBQ or BBQ; Side of Ranch or Blue Cheese; $.75 for each additional dressing; 6 for $7.25 or 10 for $13.99", "price": 13.99, "quantity": 20},
+{"categoryId": 4, "sizeId": 3, "employeeId": 2, "name": "Wings", "description": "Hot, Medium, Mild, Honey Hot, Honey, BBQ or BBQ; Side of Ranch or Blue Cheese; $.75 for each additional dressing; 6 for $7.25 or 10 for $13.99", "price": 13.99, "quantity": 20},
 
-{"categoryId": 5, "modifierId": 4, "employeeId": 2, "name": "Small Caesar Salad", "description": "Romaine Lettuce, Croutons, Shredded Parmesan & Caesar Dressing", "price": 5.25, "quantity": 20},
-{"categoryId": 5, "modifierId": 4, "employeeId": 3, "name": "Caprese Salad", "description": " Fresh Mozzarella, Tomatoes, Basil,Olive Oil &  Balsamic Glaze ", "price": 8.49, "quantity": 20},
+{"categoryId": 5, "sizeId": 4, "modifierId": 4, "employeeId": 2, "name": "Small Caesar Salad", "description": "Romaine Lettuce, Croutons, Shredded Parmesan & Caesar Dressing", "price": 5.25, "quantity": 20},
+{"categoryId": 5, "sizeId": 4, "modifierId": 4, "employeeId": 3, "name": "Caprese Salad", "description": " Fresh Mozzarella, Tomatoes, Basil,Olive Oil &  Balsamic Glaze ", "price": 8.49, "quantity": 20},
 
 {"categoryId": 6, "modifierId": 5, "employeeId": 2, "name": "Stuffed Shells", "description": "Classic ricotta stuffed shells with flavorful three cheese ricotta filling and delicious marinara sauce.", "price": 12.99, "quantity": 20},
 {"categoryId": 6, "modifierId": 5, "employeeId": 3, "name": "Homemade Lasagna", "description": "Stacked layers of pasta packed with meat and cheese, covered in our own home made sauce.", "price": 14.99, "quantity": 20},
 
-{"categoryId": 7, "modifierId": 6, "employeeId": 2, "name": "Penne with Butter Sauce", "description": "pasta with butter", "price": 8.49, "quantity": 20},
-{"categoryId": 7, "modifierId": 6, "employeeId": 3, "name": "Spaghetti with Tomato Sauce", "description": "pasta with red sauce", "price": 9.49, "quantity": 20},
+{"categoryId": 7, "modifierId": 6, "sizeId": 5, "employeeId": 2, "name": "Penne with Butter Sauce", "description": "pasta with butter", "price": 8.49, "quantity": 20},
+{"categoryId": 7, "modifierId": 6, "sizeId": 5, "employeeId": 3, "name": "Spaghetti with Tomato Sauce", "description": "pasta with red sauce", "price": 9.49, "quantity": 20},
 
 {"categoryId": 8, "modifierId": 7, "employeeId": 2, "name": "Pepperoni Melt", "description": "pepperoni, cheese, marinara", "price": 8.99, "quantity": 20},
 {"categoryId": 8, "modifierId": 7, "employeeId": 3, "name": "Meatball Parmigiana Sub", "description": "meatball, cheese, marinara", "price": 8.99, "quantity": 20},

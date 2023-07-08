@@ -84,21 +84,6 @@ Modifiers.init(
         M21: {
             type: DataTypes.STRING 
         },
-        M22: {
-            type: DataTypes.STRING 
-        },
-        M23: {
-            type: DataTypes.STRING 
-        },
-        M24: {
-            type: DataTypes.STRING 
-        },
-        M25: {
-            type: DataTypes.STRING 
-        },
-        M26: {
-            type: DataTypes.STRING 
-        },
         notesForTheKitchen: {
             type: DataTypes.STRING
         },
