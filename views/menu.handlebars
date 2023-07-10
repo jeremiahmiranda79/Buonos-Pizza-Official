@@ -1,4 +1,4 @@
-<div class="bg-white">
+{{!-- <div class="bg-white">
     <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
     <h2 class="sr-only">Products</h2>
     
@@ -23,6 +23,61 @@
                     <p class="mt-1 text-lg font-medium text-gray-900">{{item.description}}</p>
                     </a>
                 {{/each}}
+            </div>
+        {{/each}}
+    </div>
+</div> --}}
+<div class="bg-white">
+    <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+    <h2 class="sr-only">Products</h2>
+    
+    <div class="inline-flex rounded-md shadow-sm" role="group">
+        {{#if isAdmin}}
+        {{!-- Changes each category link to a modify category link --}}
+            {{#each category as |cat|}}
+                <a href="/api/menu/admin/cat/modify/{{cat.id}}"><button type="button" class="justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">{{ cat.name }}</button></a>       
+            {{/each}}
+            </div><br><br>
+            <a href="/api/menu/admin/cat/create"><button type="button" class="justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Add Category</button></a>
+        {{else}}
+        {{!-- Default view, non admin --}}
+            {{#each category as |cat|}}
+                <a href="#{{cat.id}}"><button type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">{{ cat.name }}</button></a>       
+            {{/each}}
+            </div>
+        {{/if}}
+    
+
+        {{#each category as |cat|}}
+            <br>
+            <br>
+            <h1 id="{{cat.id}}"><strong>{{cat.name}}</strong></h1>
+            <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                {{#each cat.menuitems as |item|}}
+                {{!-- This <a> is admin specific, if admin, every item is modifiable --}}
+                {{!-- If not an admin, link to normal api route --}}
+                    {{#if ../../isAdmin}}
+                        <a href="api/menu/admin/{{item.id}}" class="group">
+                    {{else}}
+                        <a href="newmenu/{{item.id}}" class="group">
+                    {{/if}}
+                    <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                        <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+                    </div>
+                    <h3 class="mt-4 text-sm text-gray-700">{{item.name}}</h3>
+                    <p class="mt-1 text-lg font-medium text-gray-900">{{item.price}}</p>
+                    <p class="mt-1 text-lg font-medium text-gray-900">{{item.description}}</p>
+                    </a>
+                {{/each}}
+                {{!-- This entire <a> is admin only  --}}
+                {{#if ../isAdmin}}
+                <a href="/api/menu/admin/create/{{cat.id}}" class="group">
+                    <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                        <img src="/images/store-items/AddItem.png" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+                    </div>
+                    <p class="mt-1 text-lg font-medium text-gray-900">Add Item</p>
+                </a>
+                {{/if}}
             </div>
         {{/each}}
     </div>

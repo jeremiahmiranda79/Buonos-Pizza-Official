@@ -116,6 +116,27 @@ router.get('/TEST', async (req, res) => {
 /***** CREATE ******/
 // Route to create new Menu Item
 // POST method with endpoint '/api/menu/newitem'
+// router.post('/newitem', async (req, res) => {
+//     try {
+//         const newMenuItem = await MenuItems.create({
+//             categoryId: req.body.categoryId,
+//             employeeId: req.body.employeeId,
+//             name: req.body.name,
+//             description: req.body.description,
+//             price: req.body.price,
+//             quantity: req.body.quantity
+//         });
+//         res.status(201).json(newMenuItem);
+//     } catch (error) {
+//         console.log(error);
+//         res.status(500).json(error); // 500 - internal server error
+//     };
+// });
+
+/***** CREATE ******/
+// Route to create new Menu Item
+// POST method with endpoint '/api/menu/newitem'
+//! Edited to be post and redirect to menu instead of json.
 router.post('/newitem', async (req, res) => {
     try {
         const newMenuItem = await MenuItems.create({
@@ -126,31 +147,65 @@ router.post('/newitem', async (req, res) => {
             price: req.body.price,
             quantity: req.body.quantity
         });
-        res.status(201).json(newMenuItem);
+        res.status(201).redirect('/menu');
     } catch (error) {
         console.log(error);
         res.status(500).json(error); // 500 - internal server error
     };
 });
 
+// // Route to create new Category
+// // POST method with endpoint '/api/menu/newcategory'
+// router.post('/newcategory', async (req, res) => {
+//     try {
+//         const newCategory = await Categories.create({
+//             name: req.body.name
+//         });
+//         res.status(201).json(newCategory);
+//     } catch (error) {
+//         console.log(error);
+//         res.status(500).json(error); // 500 - internal server error
+//     };
+// });
 // Route to create new Category
 // POST method with endpoint '/api/menu/newcategory'
+//! Edited to redirect to menu instead of json.
 router.post('/newcategory', async (req, res) => {
     try {
+        console.log("New Category")
         const newCategory = await Categories.create({
             name: req.body.name
         });
-        res.status(201).json(newCategory);
+        res.status(201).redirect('/menu');
     } catch (error) {
         console.log(error);
         res.status(500).json(error); // 500 - internal server error
     };
 });
 
+// /***** UPDATE ******/
+// // Route to update new Menu Item
+// // PUT method with endpoint '/api/menu/updateMenuItem/:menuItemId'
+// router.put('/updateMenuItem/:menuItemId', async (req, res) => {
+//     try {
+//         const updatedMenuItem = await MenuItems.update(req.body, {
+//             where: {
+//                 id: req.params.menuItemId
+//             },
+//         });
+//         console.log(updatedMenuItem);
+//         if (!updatedMenuItem[0]) return res.status(404).json({ message: 'No menu item found.' }); // 404 - Not Found
+//         res.status(202).json(updatedMenuItem);
+//     } catch (error) {
+//         console.log(error);
+//         res.status(500).json(error); // 500 - internal server error
+//     };
+// });
 /***** UPDATE ******/
 // Route to update new Menu Item
 // PUT method with endpoint '/api/menu/updateMenuItem/:menuItemId'
-router.put('/updateMenuItem/:menuItemId', async (req, res) => {
+//! Edited to be post and redirect to menu instead of json.
+router.post('/updateMenuItem/:menuItemId', async (req, res) => {
     try {
         const updatedMenuItem = await MenuItems.update(req.body, {
             where: {
@@ -159,16 +214,33 @@ router.put('/updateMenuItem/:menuItemId', async (req, res) => {
         });
         console.log(updatedMenuItem);
         if (!updatedMenuItem[0]) return res.status(404).json({ message: 'No menu item found.' }); // 404 - Not Found
-        res.status(202).json(updatedMenuItem);
+        res.status(202).redirect('/menu');
     } catch (error) {
         console.log(error);
         res.status(500).json(error); // 500 - internal server error
     };
 });
 
+// // Route to update new Category
+// // PUT method with endpoint '/api/menu/updateCategory/:categoryId'
+// router.put('/updateCategory/:categoryId', async (req, res) => {
+//     try {
+//         const updatedCategory = await Categories.update(req.body, {
+//             where: {
+//                 id: req.params.categoryId
+//             },
+//         });
+//         console.log(updatedCategory);
+//         if (!updatedCategory[0]) return res.status(404).json({ message: 'No category found.' }); // 404 - Not Found
+//         res.status(202).json(updatedCategory);
+//     } catch (error) {
+//         console.log(error);
+//         res.status(500).json(error); // 500 - internal server error
+//     };
+// });
 // Route to update new Category
 // PUT method with endpoint '/api/menu/updateCategory/:categoryId'
-router.put('/updateCategory/:categoryId', async (req, res) => {
+router.post('/updateCategory/:categoryId', async (req, res) => {
     try {
         const updatedCategory = await Categories.update(req.body, {
             where: {
@@ -177,17 +249,36 @@ router.put('/updateCategory/:categoryId', async (req, res) => {
         });
         console.log(updatedCategory);
         if (!updatedCategory[0]) return res.status(404).json({ message: 'No category found.' }); // 404 - Not Found
-        res.status(202).json(updatedCategory);
+        res.status(202).redirect('/menu');
     } catch (error) {
         console.log(error);
         res.status(500).json(error); // 500 - internal server error
     };
 });
 
+// /***** DELETE ******/
+// // Route to delete Menu Item
+// // DELETE method with endpoint '/api/menu/deleteMenuItem/:menuItemId'
+// router.delete('/deleteMenuItem/:menuItemId', async (req, res) => {
+//     try {
+//         const deletedMenuItem = await MenuItems.destroy({
+//             where: {
+//                 id: req.params.menuItemId
+//             },
+//         });
+//         console.log(deletedMenuItem);
+//         if (!deletedMenuItem) return res.status(404).json({ message: 'No menu item found.' }); // 404 - Not Found
+//         res.status(202).json(deletedMenuItem);
+//     } catch (error) {
+//         console.log(error);
+//         res.status(500).json(error); // 500 - internal server error
+//     };
+// });
 /***** DELETE ******/
 // Route to delete Menu Item
 // DELETE method with endpoint '/api/menu/deleteMenuItem/:menuItemId'
-router.delete('/deleteMenuItem/:menuItemId', async (req, res) => {
+//! Edited to be post and redirect to menu instead of json.
+router.post('/deleteMenuItem/:menuItemId', async (req, res) => {
     try {
         const deletedMenuItem = await MenuItems.destroy({
             where: {
@@ -196,25 +287,41 @@ router.delete('/deleteMenuItem/:menuItemId', async (req, res) => {
         });
         console.log(deletedMenuItem);
         if (!deletedMenuItem) return res.status(404).json({ message: 'No menu item found.' }); // 404 - Not Found
-        res.status(202).json(deletedMenuItem);
+        res.status(202).redirect('/menu');
     } catch (error) {
         console.log(error);
         res.status(500).json(error); // 500 - internal server error
     };
 });
 
-// Route to delete Menu Item
-// DELETE method with endpoint '/api/menu/deleteCategory/:categoryId'
-router.delete('/deleteCategory/:categoryId', async (req, res) => {
+// // Route to delete Menu Item
+// // DELETE method with endpoint '/api/menu/deleteCategory/:categoryId'
+// router.delete('/deleteCategory/:categoryId', async (req, res) => {
+//     try {
+//         const deletedCategory = await Categories.destroy({
+//             where: {
+//                 id: req.params.categoryId
+//             },
+//         });
+//         console.log(deletedCategory);
+//         if (!deletedCategory) return res.status(404).json({ message: 'No category found.' }); // 404 - Not Found
+//         res.status(202).json(deletedCategory);
+//     } catch (error) {
+//         console.log(error);
+//         res.status(500).json(error); // 500 - internal server error
+//     };
+// });
+//Post method to delete category
+//! Edited to redirect to menu instead of json.
+router.post('/delcategory/:categoryId', async (req, res) => {
     try {
-        const deletedCategory = await Categories.destroy({
+        console.log("Delete Category")
+        const deletedMenuItem = await Categories.destroy({
             where: {
                 id: req.params.categoryId
             },
         });
-        console.log(deletedCategory);
-        if (!deletedCategory) return res.status(404).json({ message: 'No category found.' }); // 404 - Not Found
-        res.status(202).json(deletedCategory);
+        res.status(201).redirect('/menu');
     } catch (error) {
         console.log(error);
         res.status(500).json(error); // 500 - internal server error
