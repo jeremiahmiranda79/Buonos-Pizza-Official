@@ -1,13 +1,15 @@
-[{"name": "Pizzas"},
-{"name": "Calzones"},
-{"name": "Strombolis"},
-{"name": "Appetizers"},
-{"name": "Salads"},
-{"name": "Entrees"},
-{"name": "Pastas"},
-{"name": "HotSubs"},
-{"name": "ColdSubs"},
-{"name": "SidesOrders"},
-{"name": "Desserts"},
-{"name": "Beverages"},
-{"name": "NY_Specialties"}]
+[
+    {"name": "Pizzas"},
+    {"name": "Calzones"},
+    {"name": "Strombolis"},
+    {"name": "Appetizers"},
+    {"name": "Salads"},
+    {"name": "Entrees"},
+    {"name": "Pastas"},
+    {"name": "HotSubs"},
+    {"name": "ColdSubs"},
+    {"name": "SidesOrders"},
+    {"name": "Desserts"},
+    {"name": "Beverages"},
+    {"name": "NY_Specialties"}
+]

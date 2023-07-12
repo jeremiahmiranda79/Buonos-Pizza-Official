@@ -17,7 +17,13 @@ Sizes.init(
                 model: 'categories',
                 key: 'id'
             }
-        },        
+        },
+        // //Jeremiah start
+        // price: {
+        //     type: DataTypes.DECIMAL(10, 2),
+        //     allowNull: false
+        // },
+        // //Jeremiah end        
         S1: {
             type: DataTypes.STRING 
         },

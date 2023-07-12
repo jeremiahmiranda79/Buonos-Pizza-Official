@@ -1,31 +1,55 @@
-{{!-- sample code to create a list of items --}}
-
-{{!-- <!-- Loop over each object in the projects array -->
-{{#each projects as |project| }}
-<div class="row mb-4 project">
-  <div class="col-md-5">
-    <h2>
-      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
-      {{{get_emoji}}}
-      <a href="/project/{{project.id}}">{{project.name}}</a>
-    </h2>
-    <p>
-      <span for="img" aria-label="money">💲</span>
-      <!-- Pass needed_funding value to the helper function -->
-      <span class="dollar-amount">{{format_amount project.needed_funding}}</span>
-      needed!
-    </p>
-    <p>Created by {{project.user.name}} on {{format_date project.date_created}}</p>
-  </div>
-  <div class="col-md-7">
-    <p>
-      {{project.description}}
-    </p>
-  </div>
+<div id="default-carousel" class="relative w-full" data-carousel="slide">
+    <!-- Carousel wrapper -->
+    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+         <!-- Item 1 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/docs/images/carousel/carousel-1.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 2 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/docs/images/carousel/carousel-2.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 3 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/docs/images/carousel/carousel-3.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 4 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/docs/images/carousel/carousel-4.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 5 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/docs/images/carousel/carousel-5.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+    </div>
+    <!-- Slider indicators -->
+    <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+    </div>
+    <!-- Slider controls -->
+    <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+            </svg>
+            <span class="sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="sr-only">Next</span>
+        </span>
+    </button>
 </div>
-{{/each}} --}}
-
 <!-- Slideshow container -->
+  <!--Carousel items-->
 <div
   id="carouselExampleCaptions"
   class="relative"
@@ -47,31 +71,24 @@
       type="button"
       data-te-target="#carouselExampleCaptions"
       data-te-slide-to="1"
-      class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+      class="mx-[3px] box-content h-1 w-1 flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
       aria-label="Slide 2"></button>
-    <button
-      type="button"
-      data-te-target="#carouselExampleCaptions"
-      data-te-slide-to="2"
-      class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-      aria-label="Slide 3"></button>
   </div>
-
   <!--Carousel items-->
   <div
     class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
     <!--First item-->
     <div
-      class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+      class="relative float-left -mr-[80%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
       data-te-carousel-active
       data-te-carousel-item
       style="backface-visibility: hidden">
       <img
         src="images/store-items/slider1.jpg"
-        class="block w-full"
+        class="block w-[80%] mx-auto"
         alt="..." />
       <div
-        class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center font-bold text-white md:block">
+        class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
         <h5 class="text-xl">Daily lunch specials 11 am - 4 pm</h5>
         <p>
           2 slices of cheese pizza & 20 oz fountain drink $6.99
@@ -83,12 +100,12 @@
     </div>
     <!--Second item-->
     <div
-      class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+      class="relative float-left -mr-[80%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
       data-te-carousel-item
       style="backface-visibility: hidden">
       <img
         src="images/store-items/s2.jpg"
-        class="block w-full"
+        class="block w-[100%] mx-auto"
         alt="..." />
       <div
         class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
@@ -99,8 +116,7 @@
         </p>
       </div>
     </div>
-   
-
+  </div>
   <!--Carousel controls - prev item-->
   <button
     class="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
@@ -152,11 +168,9 @@
     >
   </button>
 </div>
-      
-<!--Menu cards content here-->
-  
-<div class="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
 
+<!--Menu cards content here-->
+<div class="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
     <div class="border-b mb-5 flex justify-between text-sm">
         <div class="text-indigo-600 flex items-center pb-2 pr-2 border-b-2 border-indigo-600 uppercase">
             <svg class="h-6 mr-3" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
@@ -176,276 +190,238 @@
         </div>
         <a href="#">See All</a>
     </div>
-
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-
+    <div class="grid grid-cols-1 sm:grid-cols-2 sm:grid-cols-3 sm:grid-cols-4 sm:grid-cols-5 gap-10">
         <!-- CARD 1 -->
         <div class="rounded overflow-hidden shadow-lg flex flex-col">
             <a href="#"></a>
             <div class="relative"><a href="#">
-                    <img class="w-full"
+                    <img class="w-full h-auto"
                         src="images/menu/pizza.png"
                         alt="Pizza">
-                    <div
-                        class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                    </div>
+                    <div class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 opacity-25"></div>
                 </a>
             </div>
-            <div class="px-6 py-4 mb-auto">
+            <div class="px-4 py-2 mb-auto">
                 <a href="#"
-                    class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">
+                    class="font-medium text-sm inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">
                    Pizza</a>
             </div>
-            <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
+            <div class="px-4 py-2 flex flex-row items-center justify-between bg-gray-100">
                 <span href="#" class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-                    <svg height="13px" width="13px" version="1.1" id="Layer_1"
+                    <svg height="8px" width="8px" version="1.1" id="Layer_1"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
                         y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
                         xml:space="preserve">
-                               
             </div>
         </div>
-
          <!-- CARD 2 -->
-        <div class="rounded overflow-hidden shadow-lg flex flex-col">
-            <a href="#"></a>
-            <div class="relative"><a href="#">
-                    <img class="w-full"
-                        src="images/menu/calzone.png"
-                        alt="Calzone">
-                    <div
-                        class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                    </div>
-                </a>
-            </div>
-            <div class="px-6 py-4 mb-auto">
-                <a href="#"
-                    class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">
-                   Calzone</a>
-            </div>
-            <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
-                <span href="#" class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-                    <svg height="13px" width="13px" version="1.1" id="Layer_1"
-                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                        y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
-                        xml:space="preserve">
-                               
-            </div>
-        </div>
-
+       <div class="rounded overflow-hidden shadow-lg flex flex-col">
+    <a href="#"></a>
+    <div class="relative">
+        <a href="#">
+            <img class="w-full h-auto"
+                src="images/menu/calzone.png"
+                alt="Calzone">
+            <div class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 opacity-25"></div>
+        </a>
+    </div>
+    <div class="px-4 py-2 mb-auto">
+        <a href="#" class="font-medium text-sm inline-block hover:text-indigo-600 transition duration-500 ease-in-out mb-2">
+            Calzone
+        </a>
+    </div>
+    <div class="px-4 py-2 flex flex-row items-center justify-between">
+        <span href="#" class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
+            <svg height="13px" width="13px" version="1.1" id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
+                xml:space="preserve">
+                <!-- SVG icon code -->
+            </svg>
+        </span>
+    </div>
+</div>
          <!-- CARD 3 -->
         <div class="rounded overflow-hidden shadow-lg flex flex-col">
             <a href="#"></a>
             <div class="relative"><a href="#">
-                    <img class="w-full"
+                    <img class="w-full h-auto"
                         src="images/menu/stromboli.png"
                         alt="Stromboli">
-                    <div
-                        class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                    </div>
+                    <div class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 opacity-25"></div>
                 </a>
             </div>
-            <div class="px-6 py-4 mb-auto">
+            <div class="px-4 py-2 mb-auto">
                 <a href="#"
-                    class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">
+                    class="font-medium text-sm inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">
                    Stromboli</a>
             </div>
-            <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
+            <div class="px-4 py-2 flex flex-row items-center justify-between bg-gray-100">
                 <span href="#" class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
                     <svg height="13px" width="13px" version="1.1" id="Layer_1"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
                         y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
                         xml:space="preserve">
-                               
             </div>
         </div>
-
  <!-- CARD 4 -->
         <div class="rounded overflow-hidden shadow-lg flex flex-col">
             <a href="#"></a>
             <div class="relative"><a href="#">
-                    <img class="w-full"
+                    <img class="w-full h-auto"
                         src="images/menu/pasta.png"
                         alt="Pasta">
-                    <div
-                        class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                    </div>
+                    <div class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 opacity-25"></div>
                 </a>
             </div>
-            <div class="px-6 py-4 mb-auto">
+            <div class="px-4 py-2 mb-auto">
                 <a href="#"
-                    class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">
+                    class="font-medium text-sm inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">
                    Pasta Favorites</a>
             </div>
-            <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
+            <div class="px-4 py-2 flex flex-row items-center justify-between bg-gray-100">
                 <span href="#" class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
                     <svg height="13px" width="13px" version="1.1" id="Layer_1"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
                         y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
                         xml:space="preserve">
-                               
             </div>
         </div>
-
- <!-- CARD 5 -->
+<!-- CARD 5 -->
         <div class="rounded overflow-hidden shadow-lg flex flex-col">
             <a href="#"></a>
             <div class="relative"><a href="#">
-                    <img class="w-full"
+                    <img class="w-full h-auto"
                         src="images/menu/hotsub.png"
                         alt="Hotsub">
-                    <div
-                        class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                    </div>
+                    <div class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 opacity-25"></div>
                 </a>
             </div>
-            <div class="px-6 py-4 mb-auto">
+            <div class="px-4 py-2 mb-auto">
                 <a href="#"
-                    class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">
+                    class="font-medium text-sm inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">
                    Hot Sub</a>
             </div>
-            <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
+            <div class="px-4 py-2 flex flex-row items-center justify-between bg-gray-100">
                 <span href="#" class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
                     <svg height="13px" width="13px" version="1.1" id="Layer_1"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
                         y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
                         xml:space="preserve">
-                               
             </div>
         </div>
-      
        <!-- CARD 6 -->
         <div class="rounded overflow-hidden shadow-lg flex flex-col">
             <a href="#"></a>
             <div class="relative"><a href="#">
-                    <img class="w-full"
+                    <img class="w-full h-auto"
                         src="images/menu/coldsub.png"
                         alt="Coldsub">
-                    <div
-                        class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                    </div>
+                    <div class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 opacity-25"></div>
                 </a>
             </div>
-            <div class="px-6 py-4 mb-auto">
+            <div class="px-4 py-2 mb-auto">
                 <a href="#"
-                    class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">
+                    class="font-medium text-sm inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">
                    Cold Sub</a>
             </div>
-            <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
+            <div class="px-4 py-2 flex flex-row items-center justify-between bg-gray-100">
                 <span href="#" class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
                     <svg height="13px" width="13px" version="1.1" id="Layer_1"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
                         y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
                         xml:space="preserve">
-                               
             </div>
         </div>
-
          <!-- CARD 7 -->
         <div class="rounded overflow-hidden shadow-lg flex flex-col">
             <a href="#"></a>
             <div class="relative"><a href="#">
-                    <img class="w-full"
+                    <img class="w-full h-auto"
                         src="images/menu/chickensalad.png"
                         alt="Salads">
-                    <div
-                        class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                    </div>
+                    <div class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 opacity-25"></div>
                 </a>
             </div>
-            <div class="px-6 py-4 mb-auto">
+            <div class="px-4 py-2 mb-auto">
                 <a href="#"
-                    class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">
+                    class="font-medium text-sm inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">
                    Salads</a>
             </div>
-            <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
+            <div class="px-4 py-2 flex flex-row items-center justify-between bg-gray-100">
                 <span href="#" class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
                     <svg height="13px" width="13px" version="1.1" id="Layer_1"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
                         y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
                         xml:space="preserve">
-                               
             </div>
         </div>
-
          <!-- CARD 8 -->
         <div class="rounded overflow-hidden shadow-lg flex flex-col">
             <a href="#"></a>
             <div class="relative"><a href="#">
-                    <img class="w-full"
+                    <img class="w-full h-auto"
                         src="images/menu/sausagerolls.png"
                         alt="Appetizers">
-                    <div
-                        class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                    </div>
+                    <div class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 opacity-25"></div>
                 </a>
             </div>
-            <div class="px-6 py-4 mb-auto">
+            <div class="px-4 py-2 mb-auto">
                 <a href="#"
-                    class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">
+                    class="font-medium text-sm inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">
                    Appetizers</a>
             </div>
-            <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
+            <div class="px-4 py-2 flex flex-row items-center justify-between bg-gray-100">
                 <span href="#" class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
                     <svg height="13px" width="13px" version="1.1" id="Layer_1"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
                         y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
                         xml:space="preserve">
-                               
             </div>
         </div>
-
          <!-- CARD 9 -->
         <div class="rounded overflow-hidden shadow-lg flex flex-col">
             <a href="#"></a>
             <div class="relative"><a href="#">
-                    <img class="w-full"
+                    <img class="w-full h-auto"
                         src="images/menu/tiramisu.png"
                         alt="Desserts">
-                    <div
-                        class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                    </div>
+                    <div class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 opacity-25"></div>
                 </a>
             </div>
-            <div class="px-6 py-4 mb-auto">
+            <div class="px-4 py-2 mb-auto">
                 <a href="#"
-                    class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">
+                    class="font-medium text-sm inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">
                    Desserts</a>
             </div>
-            <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
+            <div class="px-4 py-2 flex flex-row items-center justify-between bg-gray-100">
                 <span href="#" class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
                     <svg height="13px" width="13px" version="1.1" id="Layer_1"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
                         y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
                         xml:space="preserve">
-                               
             </div>
         </div>
-
          <!-- CARD 10 -->
         <div class="rounded overflow-hidden shadow-lg flex flex-col">
             <a href="#"></a>
             <div class="relative"><a href="#">
-                    <img class="w-full"
+                    <img class="w-full h-auto"
                         src="images/menu/beer.png"
                         alt="Beverage">
-                    <div
-                        class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                    </div>
+                    <div class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 opacity-25"></div>
                 </a>
             </div>
-            <div class="px-6 py-4 mb-auto">
+            <div class="px-4 py-2 mb-auto">
                 <a href="#"
-                    class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">
+                    class="font-medium text-sm inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">
                    Beverages</a>
             </div>
-            <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
+            <div class="px-4 py-2 flex flex-row items-center justify-between bg-gray-100">
                 <span href="#" class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
                     <svg height="13px" width="13px" version="1.1" id="Layer_1"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
                         y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
                         xml:space="preserve">
-                               
             </div>
         </div>

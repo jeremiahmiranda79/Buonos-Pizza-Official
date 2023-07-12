@@ -1,7 +1,17 @@
 [
-    {"categoryId": 1, "S1": "Small 14 inches", "S2": "Large 16 inches", "S3": "X-Large 18"},
-    {"categoryId": 2, "S1": "Small serves 1", "S2": "Large serves 2-3"},
-    {"categoryId": 4, "S1": "6 pieces", "S2": "10 pieces"},
-    {"categoryId": 5, "S1": "Small", "S2": "Large"},
-    {"categoryId": 7, "S1": "Small", "S2": "Large"}
+    {
+        "categoryId": 1, "S1": "Small 14 inches/$15.49", "S2": "Large 16 inches/$17.49", "S3": "X-Large 18/$19.49"
+    },
+    {
+        "categoryId": 2, "S1": "Small serves 1", "S2": "Large serves 2-3"
+    },
+    {
+        "categoryId": 4, "S1": "6 pieces", "S2": "10 pieces"
+    },
+    {
+        "categoryId": 5, "S1": "Small", "S2": "Large"
+    },
+    {
+        "categoryId": 7, "S1": "Small", "S2": "Large"
+    }
 ]

@@ -1,4 +1,14 @@
-[{"first_name":"Oona","last_name":"Gogin","admin":false,"email":"ogogin0@vk.com","password":"password"},
-{"first_name":"Veronika","last_name":"Salvati","admin":true,"email":"vsalvati1@networkadvertising.org","password":"password"},
-{"first_name":"Osgood","last_name":"Yude","admin":true,"email":"oyude2@dedecms.com","password":"password"},
-{"first_name":"Stormi","last_name":"Vezey","admin":false,"email":"svezey3@blog.com","password":"password"}] 
+[
+    {
+        "first_name":"Oona","last_name":"Gogin","admin":false,"email":"ogogin0@vk.com","password":"password"
+    },
+    {
+        "first_name":"Veronika","last_name":"Salvati","admin":true,"email":"vsalvati1@networkadvertising.org","password":"password"
+    },   
+    {
+        "first_name":"Osgood","last_name":"Yude","admin":true,"email":"oyude2@dedecms.com","password":"password"
+    },
+    {
+        "first_name":"Stormi","last_name":"Vezey","admin":false,"email":"svezey3@blog.com","password":"password"
+    }
+] 

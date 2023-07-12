@@ -14,12 +14,17 @@ router.get('/about', async (req, res) => {
   });
 });
 
+router.get('/meet-the-team', async (req, res) => {
+    res.render('meet-the-team', {
+      layout: 'main',
+    });
+  });
+
 // Route gets all menu items, with modifiers attached to each item
 router.get('/menu', async (req, res) => {
     try {
         //* Change variable below to interface with login
         const admin = false;
-
 
         const menu = await Categories.findAll({
             attributes: {
@@ -78,7 +83,17 @@ router.get('/menu/:menuItemId', async (req, res) => {
 
         const result = removeNull(serializedItem);
 
-        console.log(result);
+        // for (let i = 0; i < result.size.length; i++) {
+        //     let myArray = result.size[i].split('/');
+        //     let word = myArray[1]; 
+        //     console.log(word);
+        // }
+
+        console.log(result.size);
+        console.log(result.size.S1);  
+        const myArray = result.size.S1.split("$");
+        let word = myArray[1];  
+        console.log(word);    
 
         res.status(200).render('product-quick-view', {
             layout: 'main',

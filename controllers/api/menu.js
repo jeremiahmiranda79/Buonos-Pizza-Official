@@ -30,11 +30,12 @@ router.get('/', async (req, res) => {
 router.get('/categories', async (req, res) => {
     try {
         const menuItem = await Categories.findAll({
-            include: [{ 
-                model: MenuItems, 
-                include: { 
-                    model: Modifiers, 
-                    attributes: { 
+            include: [
+                { 
+                    model: MenuItems, 
+                    include: { 
+                        model: Modifiers, 
+                        attributes: { 
                         exclude: 
                         [
                             'id', 
@@ -42,7 +43,7 @@ router.get('/categories', async (req, res) => {
                             'notesForTheKitchen', 
                             'createdAt', 
                             'updatedAt'
-                        ] } }, 
+                        ]} }, 
                         attributes: { 
                             exclude: 
                             [
@@ -167,6 +168,7 @@ router.post('/newitem', async (req, res) => {
 //         res.status(500).json(error); // 500 - internal server error
 //     };
 // });
+
 // Route to create new Category
 // POST method with endpoint '/api/menu/newcategory'
 //! Edited to redirect to menu instead of json.
@@ -201,6 +203,7 @@ router.post('/newcategory', async (req, res) => {
 //         res.status(500).json(error); // 500 - internal server error
 //     };
 // });
+
 /***** UPDATE ******/
 // Route to update new Menu Item
 // PUT method with endpoint '/api/menu/updateMenuItem/:menuItemId'
@@ -238,6 +241,7 @@ router.post('/updateMenuItem/:menuItemId', async (req, res) => {
 //         res.status(500).json(error); // 500 - internal server error
 //     };
 // });
+
 // Route to update new Category
 // PUT method with endpoint '/api/menu/updateCategory/:categoryId'
 router.post('/updateCategory/:categoryId', async (req, res) => {
@@ -274,6 +278,7 @@ router.post('/updateCategory/:categoryId', async (req, res) => {
 //         res.status(500).json(error); // 500 - internal server error
 //     };
 // });
+
 /***** DELETE ******/
 // Route to delete Menu Item
 // DELETE method with endpoint '/api/menu/deleteMenuItem/:menuItemId'
@@ -311,6 +316,7 @@ router.post('/deleteMenuItem/:menuItemId', async (req, res) => {
 //         res.status(500).json(error); // 500 - internal server error
 //     };
 // });
+
 //Post method to delete category
 //! Edited to redirect to menu instead of json.
 router.post('/delcategory/:categoryId', async (req, res) => {

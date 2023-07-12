@@ -1,5 +1,7 @@
-[{"orderId": 1, "paid": true},
-{"orderId": 2, "paid": false},
-{"orderId": 3, "paid": false},
-{"orderId": 4, "paid": false},
-{"orderId": 5, "paid": true}]
+[
+    {"orderId": 1, "paid": true},
+    {"orderId": 2, "paid": false},
+    {"orderId": 3, "paid": false},
+    {"orderId": 4, "paid": false},
+    {"orderId": 5, "paid": true}
+]
