@@ -2,6 +2,7 @@ const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const { Categories, MenuItems, Modifiers, Sizes, Employees  } = require('../../models');
 const withAuth = require('../../utils/auth');
+const isAdmin = require('../../utils/admin');
 
 router.get('/', async (req, res) => {
   res.render('homepage');
@@ -205,7 +206,7 @@ router.get('/customer/login', async (req, res) => {
 });
 
 // Route to add a category
-router.get('/categories/create', withAuth, async (req, res) => {
+router.get('/categories/create', withAuth, isAdmin, async (req, res) => {
     try {
         const categories = await Categories.findAll();
         const cats = categories.map((x) => x.get({ plain: true }));
@@ -218,7 +219,7 @@ router.get('/categories/create', withAuth, async (req, res) => {
     };
 });
 // Route to update a category
-router.get('/categories/update/:catId', withAuth, async (req, res) => {
+router.get('/categories/update/:catId', withAuth, isAdmin, async (req, res) => {
     try {
         const category = await Categories.findOne({
             where: {
@@ -236,7 +237,7 @@ router.get('/categories/update/:catId', withAuth, async (req, res) => {
 });
 
 // Route to add a menu item
-router.get('/menuitems/create', withAuth, async (req, res) => {
+router.get('/menuitems/create', withAuth, isAdmin, async (req, res) => {
     try {
         const categories = await Categories.findAll();
         const sizes = await Sizes.findAll();
@@ -257,7 +258,7 @@ router.get('/menuitems/create', withAuth, async (req, res) => {
     };
 });
 // Route to update a menu item
-router.get('/menuitems/update/:menuitemId', withAuth, async (req, res) => {
+router.get('/menuitems/update/:menuitemId', withAuth, isAdmin, async (req, res) => {
     try {
         const categories = await Categories.findAll();
         const sizes = await Sizes.findAll();
