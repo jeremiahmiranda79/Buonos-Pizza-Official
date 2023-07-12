@@ -33,7 +33,8 @@ const sess = {
 app.use(session(sess));
 
 // Inform Express.js on which template engine to use
-app.engine('handlebars', hbs.engine);
+// app.engine('handlebars',  hbs.engine);
+app.engine('handlebars', exphbs ({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars');
 
 // For path finding set up this middleware for express
