@@ -3,13 +3,30 @@
     <input id="description"  type="text" value="{{item.description}}"/>
     <input id="price"  type="text" value="{{item.price}}"/>
     <input id="quantity"  type="text" value="{{item.quantity}}"/>
-    <input id="categoryId"  type="text" value="{{item.categoryId}}"/>
-    <input id="modifierId"  type="text" value="{{item.modifierId}}"/>
-    <input id="sizeId"  type="text" value="{{item.sizeId}}"/>
-    <input id="employeeId"  type="text" value="{{item.employeeId}}"/>
+    <select name="categories" id="categories">
+        {{#each cats as |cat|}}
+        <option value="{{cat.id}}" id="categoryId">{{cat.name}}</option>
+        {{/each}}
+    </select>
+    <select name="sizes" id="sizes">
+        {{#each size as |s|}}
+        <option value="{{s.id}}" id="sizeId">{{s.name}}</option>
+        {{/each}}
+    </select>
+    <select name="mods" id="mods">
+        {{#each mods as |mod|}}
+        <option value="{{mod.id}}" id="sizeId">{{mod.name}}</option>
+        {{/each}}
+    </select>
+    <select name="emps" id="emps">
+        {{#each emps as |emp|}}
+        <option value="{{emp.id}}" id="sizeId">{{emp.first_name}} {{emp.last_name}}</option>
+        {{/each}}
+    </select>
     <input type="hidden" name="item-id" value="{{item.id}}"/>
     <button type="submit">Update</button> 
 </form>
 <button id="deleteButton" data-id="{{item.id}}">Delete</button>
+<a href="/menu" id="cancelButton">Cancel</a>
 
 <script src="/js/updateMenuItem.js"></script>
