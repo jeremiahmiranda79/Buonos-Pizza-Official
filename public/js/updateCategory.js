@@ -1,0 +1,33 @@
+const updateCategory = async(event) => {
+    event.preventDefault();
+    const catId = document.querySelector('input[name="cat-id"]').value;
+    const name = document.querySelector('#name').value.trim();
+
+    const response = await fetch(`../../api/menu/updateCategory/${catId}`, {
+        method: 'PUT',
+        body: JSON.stringify({ name }),
+        headers: { 'Content-Type': 'application/json' },
+    });
+    if (response.ok) {
+        document.location.replace('/categories/create');
+    } else {
+        alert(response.statusText);
+    };
+};
+
+const deleteCategory = async(event) => {
+    if (event.target.hasAttribute('data-id')) {
+        const id = event.target.getAttribute('data-id');
+        const response = await fetch(`/api/menu/deleteCategory/${id}`, {
+            method: 'DELETE',
+        });
+        if (response.ok) {
+            document.location.replace('/categories/create');
+        } else {
+            alert(response.statusText);
+        };
+    };
+};
+
+document.querySelector('#updateCategory').addEventListener('submit', updateCategory);
+document.querySelector('#deleteButton').addEventListener('click', deleteCategory);

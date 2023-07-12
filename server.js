@@ -1,7 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
-const exphbs = require('express-handlebars');//TODO find missing declaration file!
+const exphbs = require('express-handlebars');
 const routes = require('./controllers/');
 const helpers = require('./utils/helpers');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);

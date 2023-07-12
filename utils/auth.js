@@ -1,13 +1,11 @@
-// check for addaption with our login system 
-// *login system not yet completed* (hold)!!
-
 const withAuth = (req, res, next) => {
     // If the user is not logged in, redirect the request to the login route
-    if (!req.session.logged_in) {
-      res.redirect('/login');
+    if (!req.session.loggedIn) {
+      console.log(req.session)
+      res.redirect('/');
     } else {
       next();
     }
-  };
+};
   
-  module.exports = withAuth;
+module.exports = withAuth;

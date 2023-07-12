@@ -19,12 +19,10 @@ Customers.init(
         first_name: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true
         },
         last_name: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true
         },
         address1: {
             type: DataTypes.STRING,
@@ -53,7 +51,6 @@ Customers.init(
         email: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
             validate: {
                 isEmail: true
             }

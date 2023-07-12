@@ -1,0 +1,15 @@
+<form id="updateMenuItem">
+    <input id="name"  type="text" value="{{item.name}}"/>
+    <input id="description"  type="text" value="{{item.description}}"/>
+    <input id="price"  type="text" value="{{item.price}}"/>
+    <input id="quantity"  type="text" value="{{item.quantity}}"/>
+    <input id="categoryId"  type="text" value="{{item.categoryId}}"/>
+    <input id="modifierId"  type="text" value="{{item.modifierId}}"/>
+    <input id="sizeId"  type="text" value="{{item.sizeId}}"/>
+    <input id="employeeId"  type="text" value="{{item.employeeId}}"/>
+    <input type="hidden" name="item-id" value="{{item.id}}"/>
+    <button type="submit">Update</button> 
+</form>
+<button id="deleteButton" data-id="{{item.id}}">Delete</button>
+
+<script src="/js/updateMenuItem.js"></script>

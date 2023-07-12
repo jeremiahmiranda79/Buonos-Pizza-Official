@@ -19,12 +19,10 @@ Employees.init(
         first_name: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true
         },
         last_name: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true
         },
         admin: {
             type: DataTypes.BOOLEAN,
@@ -33,7 +31,6 @@ Employees.init(
         email: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
             validate: {
                 isEmail: true
             }

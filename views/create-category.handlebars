@@ -1,0 +1,10 @@
+{{#each cats as |cat|}}
+<p>{{cat.name}}</p>
+{{/each}}
+<h1>Would you like to add a new category?</h1>
+<form id="addCat">
+    <input type="text" placeholder="Category Name" id="name" />
+    <button id="addCatButton" type="submit">Submit</button>
+</form>
+
+<script src="/js/createCategory.js"></script>

@@ -17,6 +17,9 @@ Sizes.init(
                 model: 'categories',
                 key: 'id'
             }
+        },
+        name: {
+            type: DataTypes.STRING 
         },        
         S1: {
             type: DataTypes.STRING 

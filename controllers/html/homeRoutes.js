@@ -1,26 +1,20 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Categories, MenuItems, Modifiers, Sizes  } = require('../../models');
+const { Categories, MenuItems, Modifiers, Sizes, Employees  } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 router.get('/', async (req, res) => {
-  res.render('homepage', {
-    layout: 'main',
-  });
+  res.render('homepage');
 });
 
 router.get('/about', async (req, res) => {
-  res.render('about-us', {
-    layout: 'main',
-  });
+  res.render('about-us');
 });
 
 // Route gets all menu items, with modifiers attached to each item
 router.get('/menu', async (req, res) => {
     try {
-        //* Change variable below to interface with login
-        const admin = false;
-
-
+        const admin = req.session.admin;
         const menu = await Categories.findAll({
             attributes: {
                 exclude: ['createdAt', 'updatedAt']//'id'
@@ -37,9 +31,7 @@ router.get('/menu', async (req, res) => {
         });
         const serializedMenuitems = menu.map((menuitem) => menuitem.get({ plain: true }));
         res.status(200).render('menu', {
-            layout: 'main',
             category: serializedMenuitems,
-
             isAdmin: admin
         });
     } catch (error) {
@@ -81,9 +73,7 @@ router.get('/menu/:menuItemId', async (req, res) => {
         console.log(result);
 
         res.status(200).render('product-quick-view', {
-            layout: 'main',
-            item: result,
-            // size: 
+            item: result 
         });
     } catch (error) {
         console.log(error);
@@ -147,7 +137,6 @@ router.get('/newmenu/:menuItemId', async (req, res) => {
         console.log(result);
 
         res.status(200).render('product-quick-view', {
-            layout: 'main',
             item: result
         });
     } catch (error) {
@@ -177,7 +166,6 @@ router.get('/menuItemsMods', async (req, res) => {
         const serializedMenuitems = menuItem.map((menuitem) => menuitem.get({ plain: true }));
         console.log(serializedMenuitems[0]);
         res.status(200).render('test', {
-            layout: 'main',
             category: serializedMenuitems
         });
     } catch (error) {
@@ -196,80 +184,102 @@ router.get('/reviews', async (req, res) => {
 
 // Render employee signup page
 router.get('/employee/signup', async (req, res) => {
-  if (req.session.loggedIn) return res.redirect('main');
+  if (req.session.loggedIn) return res.redirect('../');
     res.status(200).render('testEmployeeSignup');
 });
 // Render customer signup page
 router.get('/customer/signup', async (req, res) => {
-  if (req.session.loggedIn) return res.redirect('main');
+  if (req.session.loggedIn) return res.redirect('../');
     res.status(200).render('testCustomerSignup');
 });
 
 // Render login page
 router.get('/employee/login', async (req, res) => {
-  if (req.session.loggedIn) return res.redirect('main');
+  if (req.session.loggedIn) return res.redirect('../');
     res.status(200).render('testEmployeeLogin');
 });
 // Render login page
 router.get('/customer/login', async (req, res) => {
-  if (req.session.loggedIn) return res.redirect('main');
+  if (req.session.loggedIn) return res.redirect('../');
     res.status(200).render('testCustomerLogin');
 });
 
+// Route to add a category
+router.get('/categories/create', withAuth, async (req, res) => {
+    try {
+        const categories = await Categories.findAll();
+        const cats = categories.map((x) => x.get({ plain: true }));
+        res.status(200).render('create-category', {
+            cats
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error); // 500 - internal server error
+    };
+});
+// Route to update a category
+router.get('/categories/update/:catId', withAuth, async (req, res) => {
+    try {
+        const category = await Categories.findOne({
+            where: {
+            id: req.params.catId,
+            }
+        });
+        const cat = category.get({ plain: true })
+        res.status(200).render('update-category', {
+            cat
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error); // 500 - internal server error
+    };
+});
+
+// Route to add a menu item
+router.get('/menuitems/create', withAuth, async (req, res) => {
+    try {
+        const categories = await Categories.findAll();
+        const sizes = await Sizes.findAll();
+        const modifiers = await Modifiers.findAll();
+        const employees = await Employees.findAll();
+        const menuitems = await MenuItems.findAll();
+        const cats = categories.map((cat) => cat.get({ plain: true }));
+        const size = sizes.map((siz) => siz.get({ plain: true }));
+        const mods = modifiers.map((mod) => mod.get({ plain: true }));
+        const emps = employees.map((emp) => emp.get({ plain: true }));
+        const items = menuitems.map((item) => item.get({ plain: true }));
+        res.status(200).render('create-menu-item', {
+            items, cats, size, mods, emps
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error); // 500 - internal server error
+    };
+});
+// Route to update a menu item
+router.get('/menuitems/update/:menuitemId', withAuth, async (req, res) => {
+    try {
+        const categories = await Categories.findAll();
+        const sizes = await Sizes.findAll();
+        const modifiers = await Modifiers.findAll();
+        const employees = await Employees.findAll();
+        const menuitem = await MenuItems.findOne({
+            where: {
+            id: req.params.menuitemId,
+            }
+        });
+        const cats = categories.map((cat) => cat.get({ plain: true }));
+        const size = sizes.map((siz) => siz.get({ plain: true }));
+        const mods = modifiers.map((mod) => mod.get({ plain: true }));
+        const emps = employees.map((emp) => emp.get({ plain: true }));
+        const item = menuitem.get({ plain: true })
+        res.status(200).render('update-menu-item', {
+            item, cats, size, mods, emps
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error); // 500 - internal server error
+    };
+});
+
 module.exports = router;
-
-//* Create item (categoryId)
-router.get('/api/menu/admin/create/:categoryId', async (req, res) => {
-    try {
-        res.status(200).render('create-item', {
-            layout: 'main',
-            category: req.params.categoryId
-        });
-    } catch (error) {
-        console.log(error);
-        res.status(500).json(error); // 500 - internal server error
-    };
-});
-
-//* Modify item (itemId)
-router.get('/api/menu/admin/:menuItemId', async (req, res) => {
-    try {
-        const menuItem = await MenuItems.findByPk(req.params.menuItemId);
-        const item = menuItem.get({plain: true});
-
-        res.status(200).render('modify-item', {
-            layout: 'main',
-            item
-        });
-    } catch (error) {
-        console.log(error);
-        res.status(500).json(error); // 500 - internal server error
-    };
-});
-
-router.get('/api/menu/admin/cat/create', async (req, res) => {
-    try {
-        res.status(200).render('create-cat', {
-            layout: 'main'
-        });
-    } catch (error) {
-        console.log(error);
-        res.status(500).json(error); // 500 - internal server error
-    };
-});
-
-router.get('/api/menu/admin/cat/modify/:categoryId', async (req, res) => {
-    try {
-        //? Change to be Category info such as modifiers, name, etc
-        const cat = await Categories.findByPk(req.params.categoryId);
-        const categ = cat.get({plain: true});
-
-        res.status(200).render('modify-cat', {
-            layout: 'main',
-            category: categ
-        });
-    } catch (error) {
-        console.log(error);
-        res.status(500).json(error); // 500 - internal server error
-    };
-});

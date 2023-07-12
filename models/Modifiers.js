@@ -18,6 +18,9 @@ Modifiers.init(
                 key: 'id'
             }
         },         
+        name: {
+            type: DataTypes.STRING 
+        },
         M1: {
             type: DataTypes.STRING 
         },
