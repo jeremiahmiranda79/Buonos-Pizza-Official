@@ -11,6 +11,10 @@ router.get('/about', async (req, res) => {
   res.render('about-us');
 });
 
+router.get('/contact', async (req, res) => {
+    res.render('contact-us');
+  });
+
 // Route gets all menu items, with modifiers attached to each item
 router.get('/menu', async (req, res) => {
     try {
@@ -183,9 +187,9 @@ router.get('/reviews', async (req, res) => {
 });
 
 // Render employee signup page
-router.get('/employee/signup', async (req, res) => {
+router.get('/employee/login', async (req, res) => {
   if (req.session.loggedIn) return res.redirect('../');
-    res.status(200).render('testEmployeeSignup');
+    res.status(200).render('sign-in-registration-employee');
 });
 // Render customer signup page
 router.get('/customer/signup', async (req, res) => {
@@ -194,7 +198,7 @@ router.get('/customer/signup', async (req, res) => {
 });
 
 // Render login page
-router.get('/employee/login', async (req, res) => {
+router.get('/employee/', async (req, res) => {
   if (req.session.loggedIn) return res.redirect('../');
     res.status(200).render('testEmployeeLogin');
 });
