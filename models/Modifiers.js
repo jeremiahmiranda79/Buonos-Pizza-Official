@@ -1,6 +1,8 @@
 const {Model, DataTypes} = require('sequelize');
 const connection = require('../config/connection');
 
+// This one is a little ugly and repetitive but Sequelize did not like DataTypes.ARRAY(DataTypes.STRING)
+// There are this many pizza toppings available
 class Modifiers extends Model {};
 
 Modifiers.init(

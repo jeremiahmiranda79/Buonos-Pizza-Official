@@ -1,6 +1,7 @@
 const {Model, DataTypes} = require('sequelize');
 const connection = require('../config/connection');
 
+// This also would have had more functionality if the DataTypes.ARRAY(DataTypes.INTEGER) worked...
 class Orders extends Model {};
 
 Orders.init(
