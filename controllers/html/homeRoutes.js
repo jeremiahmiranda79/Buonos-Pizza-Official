@@ -229,36 +229,26 @@ router.get('/reviews', async (req, res) => {
 });
 
 
-// Render employee login page
-router.get('/employee/', async (req, res) => {
-  if (req.session.loggedIn) return res.redirect('../');
-    res.status(200).render('testEmployeeLogin');
+// Render employee signup page
+router.get('/employee/signup', async (req, res) => {
+if (req.session.loggedIn) return res.redirect('../');
+    res.status(200).render('create-an-account-employee');
 });
-
 // Render customer signup page
 router.get('/customer/signup', async (req, res) => {
-  if (req.session.loggedIn) return res.redirect('../');
+if (req.session.loggedIn) return res.redirect('../');
     res.status(200).render('create-an-account-customer');
 });
 
-
 // Render login page
 router.get('/employee/login', async (req, res) => {
-  if (req.session.loggedIn) return res.redirect('../');
+if (req.session.loggedIn) return res.redirect('../');
     res.status(200).render('sign-in-employee');
 });
-
-
-// Render customer login page
+// Render login page
 router.get('/customer/login', async (req, res) => {
-  if (req.session.loggedIn) return res.redirect('../');
+if (req.session.loggedIn) return res.redirect('../');
     res.status(200).render('sign-in-customer');
-});
-
-// Render customer signup page
-router.get('/customer/signup', async (req, res) => {
-  if (req.session.loggedIn) return res.redirect('../');
-    res.status(200).render('testCustomerSignup');
 });
 
 // Route to add a category
