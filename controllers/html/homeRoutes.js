@@ -8,18 +8,34 @@ const isAdmin = require('../../utils/admin');
 
 // Homepage
 router.get('/', async (req, res) => {
-  res.render('homepage');
+    res.render('homepage', {
+        loggedIn: req.session.loggedIn, 
+        name: req.session.name
+    });
 });
 
 // About The Owners
 router.get('/about', async (req, res) => {
-  res.render('about-us');
+    res.render('about-us', {
+        loggedIn: req.session.loggedIn, 
+        name: req.session.name
+    });
 });
 
 // Contact Us Page "Leave a Review"
 router.get('/contact', async (req, res) => {
-    res.render('contact-us');
-  });
+    res.render('contact-us', {
+        loggedIn: req.session.loggedIn,
+        name: req.session.name
+    });
+});
+
+router.get('/meet', async (req, res) => {
+    res.render('meet-the-team', {
+        loggedIn: req.session.loggedIn,
+        name: req.session.name
+    });
+})
 
 // Main Menu Page
 // Route gets all menu items, with modifiers attached to each item
@@ -43,7 +59,9 @@ router.get('/menu', async (req, res) => {
         const serializedMenuitems = menu.map((menuitem) => menuitem.get({ plain: true }));
         res.status(200).render('menu', {
             category: serializedMenuitems,
-            isAdmin: admin
+            isAdmin: admin,
+            loggedIn: req.session.loggedIn, 
+            name: req.session.name     
         });
     } catch (error) {
         console.log(error);
@@ -62,7 +80,7 @@ router.get('/menu/:menuItemId', async (req, res) => {
                     exclude: ['id', 'categoryId', 'notesForTheKitchen', 'createdAt', 'updatedAt']
                 }},
                 {model: Sizes, attributes: {
-                    exclude: ['id', 'categoryId', 'notesForTheKitchen', 'createdAt', 'updatedAt']
+                    exclude: ['id', 'name', 'categoryId', 'notesForTheKitchen', 'createdAt', 'updatedAt']
                 }}
             ] 
         });
@@ -85,7 +103,9 @@ router.get('/menu/:menuItemId', async (req, res) => {
         console.log(result);
 
         res.status(200).render('product-quick-view', {
-            item: result 
+            item: result,
+            loggedIn: req.session.loggedIn,
+            name: req.session.name
         });
     } catch (error) {
         console.log(error);
@@ -93,7 +113,11 @@ router.get('/menu/:menuItemId', async (req, res) => {
     };
 });
 
+
+// A test router for menu
+
 // Test Menu Page, maybe delete this?
+
 router.get('/newmenu', async (req, res) => {
     try {
         const menu = await Categories.findAll({
@@ -112,7 +136,9 @@ router.get('/newmenu', async (req, res) => {
         });
         const serializedMenuitems = menu.map((menuitem) => menuitem.get({ plain: true }));
         res.status(200).render('newmenu', {
-            category: serializedMenuitems
+            category: serializedMenuitems,
+            loggedIn: req.session.loggedIn,
+            name: req.session.name
         });
     } catch (error) {
         console.log(error);
@@ -151,7 +177,9 @@ router.get('/newmenu/:menuItemId', async (req, res) => {
         console.log(result);
 
         res.status(200).render('product-quick-view', {
-            item: result
+            item: result,
+            loggedIn: req.session.loggedIn,
+            name: req.session.name
         });
     } catch (error) {
         console.log(error);
@@ -180,7 +208,9 @@ router.get('/menuItemsMods', async (req, res) => {
         const serializedMenuitems = menuItem.map((menuitem) => menuitem.get({ plain: true }));
         console.log(serializedMenuitems[0]);
         res.status(200).render('test', {
-            category: serializedMenuitems
+            category: serializedMenuitems,
+            loggedIn: req.session.loggedIn,
+            name: req.session.name
         });
     } catch (error) {
         console.log(error);
@@ -190,18 +220,32 @@ router.get('/menuItemsMods', async (req, res) => {
 
 // Page from Project 1
 router.get('/scores', async (req, res) => {
-  res.render('baseball');
+  res.render('baseball', {loggedIn: req.session.loggedIn});
 });
 
 // Page from project 1
 router.get('/reviews', async (req, res) => {
-  res.render('yelp');
+  res.render('yelp', {loggedIn: req.session.loggedIn});
 });
 
 // Render employee login page
 router.get('/employee/login', async (req, res) => {
   if (req.session.loggedIn) return res.redirect('../');
+  
     res.status(200).render('sign-in-registration-employee');
+});
+
+
+// Render employee login page
+router.get('/employee/', async (req, res) => {
+  if (req.session.loggedIn) return res.redirect('../');
+    res.status(200).render('testEmployeeLogin');
+});
+
+// Render customer signup page
+router.get('/customer/signup', async (req, res) => {
+  if (req.session.loggedIn) return res.redirect('../');
+    res.status(200).render('testCustomerSignup');
 });
 
 // Render employee signup page
@@ -209,6 +253,7 @@ router.get('/employee/signup', async (req, res) => {
   if (req.session.loggedIn) return res.redirect('../');
     res.status(200).render('testEmployeeLogin');
 });
+
 
 // Render customer login page
 router.get('/customer/login', async (req, res) => {
@@ -228,7 +273,9 @@ router.get('/categories/create', withAuth, isAdmin, async (req, res) => {
         const categories = await Categories.findAll();
         const cats = categories.map((x) => x.get({ plain: true }));
         res.status(200).render('create-category', {
-            cats
+            cats,
+            loggedIn: req.session.loggedIn,
+            name: req.session.name
         });
     } catch (error) {
         console.log(error);
@@ -246,7 +293,9 @@ router.get('/categories/update/:catId', withAuth, isAdmin, async (req, res) => {
         });
         const cat = category.get({ plain: true })
         res.status(200).render('update-category', {
-            cat
+            cat,
+            loggedIn: req.session.loggedIn,
+            name: req.session.name
         });
     } catch (error) {
         console.log(error);
@@ -268,7 +317,7 @@ router.get('/menuitems/create', withAuth, isAdmin, async (req, res) => {
         const emps = employees.map((emp) => emp.get({ plain: true }));
         const items = menuitems.map((item) => item.get({ plain: true }));
         res.status(200).render('create-menu-item', {
-            items, cats, size, mods, emps
+            items, cats, size, mods, emps, loggedIn: req.session.loggedIn, name: req.session.name
         });
     } catch (error) {
         console.log(error);
@@ -294,7 +343,7 @@ router.get('/menuitems/update/:menuitemId', withAuth, isAdmin, async (req, res) 
         const emps = employees.map((emp) => emp.get({ plain: true }));
         const item = menuitem.get({ plain: true })
         res.status(200).render('update-menu-item', {
-            item, cats, size, mods, emps
+            item, cats, size, mods, emps, loggedIn: req.session.loggedIn, name: req.session.name
         });
     } catch (error) {
         console.log(error);
