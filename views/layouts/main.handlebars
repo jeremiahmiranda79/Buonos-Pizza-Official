@@ -19,10 +19,12 @@
           <div class="flex items-center">
             <a href="tel:4808991200" class="mr-6 text-sm  text-gray-500 dark:text-white hover:underline">(480) 899-1200</a>
             {{#if loggedIn}}
-            <button id="employeelogout">Logout |</button>
+            <button id="customerlogout">Customer Logout
+            <button id="employeelogout">Employee Logout |</button>
             <H1>🍕| {{name}}</H1>
             {{else}}
-              <a href="/employee/login" class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Login</a>
+              <a href="/customer/login" class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Customer Login|</a>
+              <a href="/employee/login" class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Employee Login</a>
               {{!-- TODO --}}
             {{/if}}
           </div>

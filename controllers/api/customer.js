@@ -118,6 +118,9 @@ router.post('/login', async (req, res) => {
         const validPassword = await user.checkPassword(req.body.password);
         if (!validPassword) return res.status(400).json({ message: 'The email or password is incorrect.' });
         req.session.save(() => {
+            //jeremiah
+            req.session.name = user.first_name;
+            //
             req.session.userId = user.id;
             req.session.admin = false;
             req.session.loggedIn = true;
