@@ -4,6 +4,9 @@ const { Categories, MenuItems, Modifiers, Sizes, Employees  } = require('../../m
 const withAuth = require('../../utils/auth');
 const isAdmin = require('../../utils/admin');
 
+// ICEBOX: This page should be split into multiple files and I will when all changes are finalized to the pages. -John
+
+// Homepage
 router.get('/', async (req, res) => {
     res.render('homepage', {
         loggedIn: req.session.loggedIn, 
@@ -11,6 +14,7 @@ router.get('/', async (req, res) => {
     });
 });
 
+// About The Owners
 router.get('/about', async (req, res) => {
     res.render('about-us', {
         loggedIn: req.session.loggedIn, 
@@ -18,6 +22,7 @@ router.get('/about', async (req, res) => {
     });
 });
 
+// Contact Us Page "Leave a Review"
 router.get('/contact', async (req, res) => {
     res.render('contact-us', {
         loggedIn: req.session.loggedIn,
@@ -32,6 +37,7 @@ router.get('/meet', async (req, res) => {
     });
 })
 
+// Main Menu Page
 // Route gets all menu items, with modifiers attached to each item
 router.get('/menu', async (req, res) => {
     try {
@@ -63,6 +69,7 @@ router.get('/menu', async (req, res) => {
     };
 });
 
+// Single Menu Item Page
 // Router to get a menuitem by Id, to display single menu item, with mods
 router.get('/menu/:menuItemId', async (req, res) => {
     try {
@@ -106,7 +113,11 @@ router.get('/menu/:menuItemId', async (req, res) => {
     };
 });
 
+
 // A test router for menu
+
+// Test Menu Page, maybe delete this?
+
 router.get('/newmenu', async (req, res) => {
     try {
         const menu = await Categories.findAll({
@@ -135,6 +146,7 @@ router.get('/newmenu', async (req, res) => {
     };
 });
 
+// another test page, delete?
 // Router to get a menuitem by Id, to display single menu item, with mods
 router.get('/newmenu/:menuItemId', async (req, res) => {
     try {
@@ -206,20 +218,23 @@ router.get('/menuItemsMods', async (req, res) => {
     };
 });
 
+// Page from Project 1
 router.get('/scores', async (req, res) => {
   res.render('baseball', {loggedIn: req.session.loggedIn});
 });
 
+// Page from project 1
 router.get('/reviews', async (req, res) => {
   res.render('yelp', {loggedIn: req.session.loggedIn});
 });
 
-// Render employee signup page
+// Render employee login page
 router.get('/employee/login', async (req, res) => {
   if (req.session.loggedIn) return res.redirect('../');
   
     res.status(200).render('sign-in-registration-employee');
 });
+
 
 // Render employee login page
 router.get('/employee/', async (req, res) => {
@@ -233,10 +248,23 @@ router.get('/customer/signup', async (req, res) => {
     res.status(200).render('testCustomerSignup');
 });
 
+// Render employee signup page
+router.get('/employee/signup', async (req, res) => {
+  if (req.session.loggedIn) return res.redirect('../');
+    res.status(200).render('testEmployeeLogin');
+});
+
+
 // Render customer login page
 router.get('/customer/login', async (req, res) => {
   if (req.session.loggedIn) return res.redirect('../');
     res.status(200).render('testCustomerLogin');
+});
+
+// Render customer signup page
+router.get('/customer/signup', async (req, res) => {
+  if (req.session.loggedIn) return res.redirect('../');
+    res.status(200).render('testCustomerSignup');
 });
 
 // Route to add a category
@@ -254,6 +282,7 @@ router.get('/categories/create', withAuth, isAdmin, async (req, res) => {
         res.status(500).json(error); // 500 - internal server error
     };
 });
+
 // Route to update a category
 router.get('/categories/update/:catId', withAuth, isAdmin, async (req, res) => {
     try {
@@ -295,6 +324,7 @@ router.get('/menuitems/create', withAuth, isAdmin, async (req, res) => {
         res.status(500).json(error); // 500 - internal server error
     };
 });
+
 // Route to update a menu item
 router.get('/menuitems/update/:menuitemId', withAuth, isAdmin, async (req, res) => {
     try {

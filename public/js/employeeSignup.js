@@ -1,3 +1,4 @@
+// Creates a new Employee profile
 const employeesignup = async(event) => {
     event.preventDefault();
     const first_name = document.querySelector('#firstName').value.trim();

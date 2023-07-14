@@ -1,6 +1,7 @@
 const {Model, DataTypes} = require('sequelize');
 const connection = require('../config/connection');
 
+// Menu Items started pretty simple and kept growing...
 class MenuItems extends Model {};
 
 MenuItems.init(

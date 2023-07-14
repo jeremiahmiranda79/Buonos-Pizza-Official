@@ -1,3 +1,4 @@
+// Signs up a new Customer
 const customersignup = async(event) => {
     event.preventDefault();
     const first_name = document.querySelector('#firstName').value.trim();

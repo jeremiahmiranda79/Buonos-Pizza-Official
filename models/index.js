@@ -7,6 +7,7 @@ const Orders = require('./Orders');
 const Transactions = require('./Transactions');
 const Sizes = require('./Sizes');
 
+// This page was all trial and error but now I have it down
 
 // Employees to MenuItems
 Employees.hasMany(MenuItems, {

@@ -1,9 +1,12 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const { Categories, MenuItems, Modifiers, Sizes  } = require('../../models');
+// For some reazon the Sizes table wouldn't show in Insomnia, but I am able to use it just fine on the HTML side. It shows null no matter what I do, it is probably a simple fix too... -John
+
 
 /***** READ ******/
-// Route to retireve all Menu Items & Categories
+
+// Route to retireve all Menu Items & Categories & Modifiers, sorted by category, with modifiers tied to each category
 // GET method with endpoint '/api/menu'
 router.get('/', async (req, res) => {
     try {
@@ -24,8 +27,7 @@ router.get('/', async (req, res) => {
         res.status(500).json(error); // 500 - internal server error
     };
 });
-
-// Route to get Categories
+// Route to get Menu Items, sorted by Category, with Modifiers attached to each Menu Item 
 // GET route with endpoint '/api/menu/categories'
 router.get('/categories', async (req, res) => {
     try {
@@ -83,8 +85,7 @@ router.get('/categories/:catId', async (req, res) => {
         res.status(500).json(error); // 500 - internal server error
     };
 });
-
-// Route to get menu items by menu items, not through categories
+// Route to get Menu Items, not through Categories
 // GET route with endpoint '/api/menu/unsorted'
 router.get('/unsorted', async (req, res) => {
     try {
@@ -95,7 +96,6 @@ router.get('/unsorted', async (req, res) => {
         res.status(500).json(error); // 500 - internal server error
     };
 });
-
 // Route to retireve a single Menu Item
 // GET method with endpoint '/api/menu/:menuItemId'
 router.get('/:menuItemId', async (req, res) => {
@@ -116,7 +116,9 @@ router.get('/:menuItemId', async (req, res) => {
     };
 });
 
+
 /***** CREATE ******/
+
 // Route to create new Menu Item
 // POST method with endpoint '/api/menu/newitem'
 router.post('/newitem', async (req, res) => {
@@ -137,7 +139,6 @@ router.post('/newitem', async (req, res) => {
         res.status(500).json(error); // 500 - internal server error
     };
 });
-
 // Route to create new Category
 // POST method with endpoint '/api/menu/newcategory'
 router.post('/newcategory', async (req, res) => {
@@ -152,8 +153,10 @@ router.post('/newcategory', async (req, res) => {
     };
 });
 
+
 /***** UPDATE ******/
-// Route to update new Menu Item
+
+// Route to update a Menu Item
 // PUT method with endpoint '/api/menu/updateMenuItem/:menuItemId'
 router.put('/updateMenuItem/:menuItemId', async (req, res) => {
     try {
@@ -170,8 +173,7 @@ router.put('/updateMenuItem/:menuItemId', async (req, res) => {
         res.status(500).json(error); // 500 - internal server error
     };
 });
-
-// Route to update new Category
+// Route to update a Category
 // PUT method with endpoint '/api/menu/updateCategory/:categoryId'
 router.put('/updateCategory/:categoryId', async (req, res) => {
     try {
@@ -188,8 +190,10 @@ router.put('/updateCategory/:categoryId', async (req, res) => {
     };
 });
 
+
 /***** DELETE ******/
-// Route to delete Menu Item
+
+// Route to delete a Menu Item
 // DELETE method with endpoint '/api/menu/deleteMenuItem/:menuItemId'
 router.delete('/deleteMenuItem/:menuItemId', async (req, res) => {
     try {
@@ -206,8 +210,7 @@ router.delete('/deleteMenuItem/:menuItemId', async (req, res) => {
         res.status(500).json(error); // 500 - internal server error
     };
 });
-
-// Route to delete Menu Item
+// Route to delete a Category
 // DELETE method with endpoint '/api/menu/deleteCategory/:categoryId'
 router.delete('/deleteCategory/:categoryId', async (req, res) => {
     try {

@@ -1,6 +1,9 @@
-const employeeloginFormHandler = async(event) => {
-    event.preventDefault();
 
+const employeeloginFormHandler = async(event) => {
+
+// Logs user in as a Employee
+const employeelogin = async(event) => {
+    event.preventDefault();
     //Collect values from the login form
     const email = document.querySelector('#email').value.trim();
     const password = document.querySelector('#password').value.trim();
