@@ -1,33 +1,4 @@
-{{!-- sample code to create a list of items --}}
-
-{{!-- <!-- Loop over each object in the projects array -->
-{{#each projects as |project| }}
-<div class="row mb-4 project">
-  <div class="col-md-5">
-    <h2>
-      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
-      {{{get_emoji}}}
-      <a href="/project/{{project.id}}">{{project.name}}</a>
-    </h2>
-    <p>
-      <span for="img" aria-label="money">💲</span>
-      <!-- Pass needed_funding value to the helper function -->
-      <span class="dollar-amount">{{format_amount project.needed_funding}}</span>
-      needed!
-    </p>
-    <p>Created by {{project.user.name}} on {{format_date project.date_created}}</p>
-  </div>
-  <div class="col-md-7">
-    <p>
-      {{project.description}}
-    </p>
-  </div>
-</div>
-{{/each}} --}}
-
 <!-- Slideshow container -->
-
-
   <!--Carousel items-->
 <div
   id="carouselExampleCaptions"
@@ -149,16 +120,9 @@
     >
   </button>
 </div>
-
-
-
-
-
-      
-<!--Menu cards content here-->
   
+<!--Menu cards content here-->
 <div class="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
-
     <div class="border-b mb-5 flex justify-between text-sm">
         <div class="text-indigo-600 flex items-center pb-2 pr-2 border-b-2 border-indigo-600 uppercase">
             <svg class="h-6 mr-3" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
@@ -178,7 +142,6 @@
         </div>
         <a href="#">See All</a>
     </div>
-
 
     <div class="grid grid-cols-1 sm:grid-cols-2 sm:grid-cols-3 sm:grid-cols-4 sm:grid-cols-5 gap-10">
 

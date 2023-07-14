@@ -1,3 +1,4 @@
+// Update the category through the API
 const updateCategory = async(event) => {
     event.preventDefault();
     const catId = document.querySelector('input[name="cat-id"]').value;
@@ -15,6 +16,7 @@ const updateCategory = async(event) => {
     };
 };
 
+// Functionality for Delete button as well
 const deleteCategory = async(event) => {
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');

@@ -1,3 +1,4 @@
+// Logs user in as a Customer
 const customerlogin = async(event) => {
     event.preventDefault();
     const email = document.querySelector('#email').value.trim();

@@ -2,7 +2,9 @@ const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const { Customers, Sizes  } = require('../../models');
 
+
 /***** READ ******/
+
 // Route to retireve all Customers
 // GET method with endpoint '/api/customer'
 router.get('/', async (req, res) => {
@@ -14,7 +16,6 @@ router.get('/', async (req, res) => {
         res.status(500).json(error); // 500 - internal server error
     };
 });
-
 // Route to retireve a single Customer
 // GET method with endpoint '/api/customer/:customerId'
 router.get('/:customerId', async (req, res) => {
@@ -27,7 +28,9 @@ router.get('/:customerId', async (req, res) => {
     };
 });
 
+
 /***** CREATE ******/
+
 // Route to create new Customer
 // GET method with endpoint '/api/customer'
 router.post('/', async (req, res) => {
@@ -55,7 +58,9 @@ router.post('/', async (req, res) => {
     };
 });
 
+
 /***** UPDATE ******/
+
 // Route to update Customer
 // GET method with endpoint '/api/customer/:customerId'
 router.put('/:customerId', async (req, res) => {
@@ -74,7 +79,9 @@ router.put('/:customerId', async (req, res) => {
     };
 });
 
+
 /***** DELETE ******/
+
 // Route to delete Customer
 // GET method with endpoint '/api/customer/:customerId'
 router.delete('/:customerId', async (req, res) => {
@@ -93,7 +100,9 @@ router.delete('/:customerId', async (req, res) => {
     };
 });
 
+
 /***** LOGIN ******/
+
 // route to login an existing customer
 // POST method with endpoint '/api/customer/login'
 // expects {"email":"estainburn0@europa.eu","password":"password"}
@@ -109,6 +118,9 @@ router.post('/login', async (req, res) => {
         const validPassword = await user.checkPassword(req.body.password);
         if (!validPassword) return res.status(400).json({ message: 'The email or password is incorrect.' });
         req.session.save(() => {
+            //jeremiah
+            req.session.name = user.first_name;
+            //
             req.session.userId = user.id;
             req.session.admin = false;
             req.session.loggedIn = true;
@@ -120,7 +132,9 @@ router.post('/login', async (req, res) => {
     };
 });
 
+
 /***** LOGOUT ******/
+
 // route to logout an existing customer
 // POST method with endpoint '/api/customer/logout' 
 router.post('/logout', async (req, res) => {
