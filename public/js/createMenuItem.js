@@ -1,3 +1,4 @@
+// POST method using information in an HTML <form> tag
 const addMenuItem = async(event) => {
     event.preventDefault();
     const name = document.querySelector('#name').value.trim();
@@ -14,7 +15,7 @@ const addMenuItem = async(event) => {
         headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
-        alert('Category Created');
+        alert('Menu Item Created');
         document.location.replace('/menuitems/create');
     } else {
         alert(response.statusText);

@@ -1,5 +1,3 @@
-// these helpers were given to us, we can add our own below
-
 module.exports = {
     format_date: (date) => {
       // Format date as MM/DD/YYYY
@@ -23,7 +21,4 @@ module.exports = {
         return `<span for="img" aria-label="gear">⚙️</span>`;
       }
     },
-
-    // add new helper here
-    
   };

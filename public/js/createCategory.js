@@ -1,3 +1,4 @@
+// POST method using information in an HTML <form> tag
 const addCat = async(event) => {
     event.preventDefault();
     const name = document.querySelector('#name').value.trim();

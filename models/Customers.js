@@ -2,6 +2,8 @@ const {Model, DataTypes} = require('sequelize');
 const connection = require('../config/connection');
 const bcrypt = require('bcrypt');
 
+// Customers, lots of info
+// We hash the password upon creating and updating the Customer
 class Customers extends Model {
     checkPassword(loginPW) {
         return bcrypt.compareSync(loginPW, this.password);
@@ -30,7 +32,6 @@ Customers.init(
         },
         address2: {
             type: DataTypes.STRING,
-            allowNull: false
         },
         city: {
             type: DataTypes.STRING,

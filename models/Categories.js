@@ -3,6 +3,7 @@ const connection = require('../config/connection');
 
 class Categories extends Model {};
 
+// Categories, simple enough
 Categories.init(
     {
         id: {
@@ -15,7 +16,6 @@ Categories.init(
             type: DataTypes.STRING,
             allowNull: false
         },
- 
     },
     {
         sequelize: connection,
