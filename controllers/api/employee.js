@@ -41,7 +41,8 @@ router.post('/', async (req, res) => {
         });
         req.session.save(() => {
             // create session variables based on the newly signed up employee
-            (req.session.userId = newEmployee.id), (req.session.loggedIn = true);
+            (req.session.userId = newEmployee.id), 
+            (req.session.loggedIn = true);
             res.status(201).json(newEmployee); // 201 - Created
         });
     } catch (error) {
@@ -103,10 +104,15 @@ router.post('/login', async (req, res) => {
         const validPassword = await user.checkPassword(req.body.password);
         if (!validPassword) return res.status(400).json({ message: 'The email or password is incorrect.' });
         req.session.save(() => {
+            //jeremiah
+            req.session.name = user.first_name;
+            //
             req.session.userId = user.id;
             req.session.admin = user.admin;
             req.session.loggedIn = true;
             res.status(202).json(user);
+
+            console.log(user);
         });
     } catch (error) {
         console.log(error);
