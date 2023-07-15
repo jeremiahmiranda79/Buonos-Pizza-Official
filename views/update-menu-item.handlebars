@@ -1,32 +1,97 @@
-<form id="updateMenuItem">
-    <input id="name"  type="text" value="{{item.name}}"/>
-    <input id="description"  type="text" value="{{item.description}}"/>
-    <input id="price"  type="text" value="{{item.price}}"/>
-    <input id="quantity"  type="text" value="{{item.quantity}}"/>
-    <select name="categories" id="categories">
-        {{#each cats as |cat|}}
-        <option value="{{cat.id}}" id="categoryId">{{cat.name}}</option>
-        {{/each}}
-    </select>
-    <select name="sizes" id="sizes">
-        {{#each size as |s|}}
-        <option value="{{s.id}}" id="sizeId">{{s.name}}</option>
-        {{/each}}
-    </select>
-    <select name="mods" id="mods">
-        {{#each mods as |mod|}}
-        <option value="{{mod.id}}" id="modifierId">{{mod.name}}</option>
-        {{/each}}
-    </select>
-    <select name="emps" id="emps">
-        {{#each emps as |emp|}}
-        <option value="{{emp.id}}" id="employeeId">{{emp.first_name}} {{emp.last_name}}</option>
-        {{/each}}
-    </select>
-    <input type="hidden" name="item-id" value="{{item.id}}"/>
-    <button type="submit">Update</button> 
-</form>
-<button id="deleteButton" data-id="{{item.id}}">Delete</button>
-<a href="/menu" id="cancelButton">Cancel</a>
+<!--
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+-->
+<!--
+  This example requires updating your template:
+
+  ```
+  <html class="h-full bg-white">
+  <body class="h-full">
+  ```
+-->
+
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+        <img class="mx-auto h-10 w-auto" src="/images/logo1_small.png" alt="Your Company">
+        <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Update {{item.name}}</h2>
+    </div>
+
+    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <form id="updateMenuItem">
+            <div class="mb-6">
+                <label for="item-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Item name</label>
+                <input type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{item.name}}" placeholder="{{item.name}}" required>
+            </div>
+
+            <div class="mb-6">
+                <label for="item-description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Item description</label>
+                <input type="text" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{item.description}}" placeholder="{{item.description}}" required>
+            </div>
+
+            <div class="mb-6">
+                <label for="item-price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Item price</label>
+                <input type="text" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{item.price}} "placeholder="{{item.price}}" required>
+            </div>
+
+            <div class="mb-6">
+                <label for="item-quantity" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Item quantity</label>
+                <input type="text" id="quantity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{item.quantity}}" placeholder="{{item.quantity}}" required>
+            </div>
+
+            <div class="mb-6">
+                <label for="item-category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Item category</label>
+                <select name="categories" id="categories" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    {{#each cats as |cat|}}
+                        <option value="{{cat.id}}" id="categoryId">{{cat.name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+            <div class="mb-6">
+                <label for="item-size" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Item size</label>
+                <select name="sizes" id="sizes" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    {{#each size as |s|}}
+                        <option value="{{s.id}}" id="sizeId">{{s.name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+            <div class="mb-6">
+                <label for="mods" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Item modifiers</label>
+                <select name="mods" id="mods" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    {{#each mods as |mod|}}
+                        <option value="{{mod.id}}" id="modifierId">{{mod.name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+            <div class="mb-6">
+                <label for="emps" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Employee name</label>
+                <select name="epms" id="epms" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    {{#each emps as |emp|}}
+                        <option value="{{emp.id}}" id="employeeId">{{emp.first_name}} {{emp.last_name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+            <input type="hidden" name="item-id" value="{{item.id}}"/>
+            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full     sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update</button>
+            <button id="deleteButton" data-id="{{item.id}}">Delete</button>
+            <a href="/menu" id="cancelButton">Cancel</a>
+        </form>
+
+    </div>
+</div>
 
 <script src="/js/updateMenuItem.js"></script>
