@@ -55,6 +55,10 @@ MenuItems.init(
         quantity: {
             type: DataTypes.INTEGER,
             allowNull: false,
+        },
+        image: {
+            type: DataTypes.STRING,
+            allowNull: false
         },  
     },
     {

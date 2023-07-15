@@ -5,7 +5,7 @@ const customerlogout = async() => {
         headers: { 'Content-Type': 'application/json'}
     });
     if (response.ok) {
-        alert('Customer Logged Out');
+        alert('User Logged Out');
         document.location.replace('/');
     } else {
         alert(response.statusText);
@@ -19,7 +19,7 @@ const employeelogout = async() => {
         headers: { 'Content-Type': 'application/json'}
     });
     if (response.ok) {
-        alert('Employee Logged Out');
+        alert('User Logged Out');
         document.location.replace('/');
     } else {
         alert(response.statusText);

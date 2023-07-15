@@ -24,6 +24,7 @@ const deleteCategory = async(event) => {
             method: 'DELETE',
         });
         if (response.ok) {
+            alert('Are you sure you want to delete this category and all things related to it? This action cannot be undone.');
             document.location.replace('/categories/create');
         } else {
             alert(response.statusText);
