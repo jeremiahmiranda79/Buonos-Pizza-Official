@@ -16,7 +16,7 @@ const hbs = exphbs.create({ helpers });
 const sess = {
   secret: process.env.DB_SECRET,
   cookie: {
-    maxAge: 360000000, // 1 hr
+    maxAge: 300000, // 5 minutes = 300000
     httpOnly: true,
     secure: false,
     sameSite: 'strict',
@@ -33,7 +33,7 @@ const sess = {
 app.use(session(sess));
 
 // Inform Express.js on which template engine to use
-app.engine('handlebars', hbs.engine);
+app.engine('handlebars', exphbs ({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars');
 
 // For path finding set up this middleware for express

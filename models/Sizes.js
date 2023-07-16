@@ -1,6 +1,7 @@
 const {Model, DataTypes} = require('sequelize');
 const connection = require('../config/connection');
 
+// Sizes seperated from modifiers for radio input here vs checkboxes on modifiers
 class Sizes extends Model {};
 
 Sizes.init(
