@@ -1,11 +1,35 @@
-{{#each cats as |cat|}}
-<p>{{cat.name}}</p>
-{{/each}}
-<h1>Would you like to add a new category?</h1>
 <form id="addCat">
-    <input type="text" placeholder="Category Name" id="name" />
-    <button id="addCatButton" type="submit">Submit</button>
-</form>
-<a href="/menu" id="cancelButton">Cancel</a>
+    <div class="bg-grey-lighter min-h-screen flex flex-col">
+            <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+                <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                    <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
+                    <h1 class="mb-8 text-3xl text-center">Menu Categories</h1>
+                    {{#each cats as |cat|}}
+                        <tr class="bg-white border-b dark:bg-white-100 dark:border-gray-300">
+                            <th scope="row" class="px-6 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-black">
+                                <p>{{cat.name}}</p>
+                        </tr>
+                    {{/each}}
+                    </table>
+                    
+                    <input 
+                        type="text"
+                        class="block border border-grey-light w-full p-3 rounded mb-4"
+                        id="name"
+                        placeholder="Add New Category" />
+                    </input>
+                    <button
+                        type="submit"
+                        class=" bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-full text-center py-3 rounded bg-blue text-black  focus:outline-none my-1 mt-8"
+                        id="addCatButton"
+                    >Submit
+                    </button>
+                </div>
 
+                <div class="text-grey-dark mt-8">
+                    Want to Create another Category? 
+                </div>
+            </div>
+    </div>
+</form>
 <script src="/js/createCategory.js"></script>
