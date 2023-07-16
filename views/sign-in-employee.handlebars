@@ -1,17 +1,4 @@
-<!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
+<form id="employeelogin">
 <!--
   This example requires updating your template:
 
@@ -22,7 +9,7 @@
 
 -->
 <div class="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
-  <img src="images/store-items/fondo.jpg" alt="..." class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center">
+  <img src="/images/fondo.jpg" alt="..." class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center">
 
 <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
   <div class="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -57,7 +44,9 @@
 
     <p class="font-semibold mt-10 text-center text-sm text-black">
       Not a member?
-      <a href="#" class="font-semibold leading-6 text-white hover:text-white">Create an account</a>
+      <a href="/employee/signup" class="font-semibold leading-6 text-white hover:text-white">Create an account</a>
     </p>
+    </form>
   </div>
 </div>
+<script src="/js/employeeLogin.js"></script>

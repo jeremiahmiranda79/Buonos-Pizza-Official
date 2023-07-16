@@ -1,3 +1,4 @@
+// Update the Menu Item through the API
 const updateMenuItem = async(event) => {
     event.preventDefault();
     const itemId = document.querySelector('input[name="item-id"]').value;
@@ -9,9 +10,6 @@ const updateMenuItem = async(event) => {
     const modifierId = document.querySelector('#modifierId').value.trim();
     const sizeId = document.querySelector('#sizeId').value.trim();
     const employeeId = document.querySelector('#employeeId').value.trim();
-
-    // console.log(itemId, name, description, price, quantity, categoryId, modifierId, sizeId, employeeId)
-
     const response = await fetch(`../../api/menu/updateMenuItem/${itemId}`, {
         method: 'PUT',
         body: JSON.stringify({ name, description, price, quantity, categoryId, modifierId, sizeId, employeeId }),
@@ -24,6 +22,7 @@ const updateMenuItem = async(event) => {
     };
 };
 
+// Functionality for Delete button as well
 const deleteMenuItem = async(event) => {
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
@@ -31,6 +30,7 @@ const deleteMenuItem = async(event) => {
             method: 'DELETE',
         });
         if (response.ok) {
+            alert('Are you sure you want to delete this menu item and all things related to it? This action cannot be undone.');
             document.location.replace('/menuitems/create');
         } else {
             alert(response.statusText);

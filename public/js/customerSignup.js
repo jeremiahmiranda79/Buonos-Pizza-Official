@@ -1,3 +1,4 @@
+// Signs up a new Customer
 const customersignup = async(event) => {
     event.preventDefault();
     const first_name = document.querySelector('#firstName').value.trim();
@@ -10,7 +11,7 @@ const customersignup = async(event) => {
     const phoneNumber = document.querySelector('#phone').value.trim();
     const email = document.querySelector('#email').value.trim();
     const password = document.querySelector('#password').value.trim();
-    // console.log(firstName, lastName, add1, add2, city, state, zip, phone, email, password);
+
     const response = await fetch('/api/customer', {
         method: 'POST',
         body: JSON.stringify({ first_name, last_name, address1, address2, city, state, zipcode, phoneNumber, email, password }),
