@@ -49,3 +49,5 @@
   ![Alt text](public/images/Readme/login-menu.png)
   - Admin Page
   ![Alt text](public/images/Readme/admin-menu.png)
+  - ERD
+  ![Alt text](public/images/Readme/ERD.png)
